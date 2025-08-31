@@ -43,9 +43,13 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-purple-600 to-pink-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">AE</span>
-              </div>
+              <div className="w-10 h-10 flex items-center justify-center">
+				<img 
+					src="/125fdb73-f5dc-4039-89c9-5e2373795c9f.png" 
+					alt="Logo" 
+					className="w-10 h-10 rounded-lg object-cover" 
+				/>
+			</div>
               <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Ali Emre
               </div>
