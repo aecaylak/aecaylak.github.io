@@ -45,7 +45,7 @@ function App() {
             <div className="flex items-center space-x-4">
               <div className="w-10 h-10 flex items-center justify-center">
 				<img 
-					src="/favicon.ico" 
+					src="/footer_logo.png" 
 					alt="Logo" 
 					className="w-10 h-10 rounded-lg object-cover" 
 				/>
@@ -146,7 +146,7 @@ function App() {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
               <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-full border-4 border-purple-500/30 flex items-center justify-center overflow-hidden">
                 <img 
-                  src="https://topluluk.etu.edu.tr/files/topluluk_foto/kullanici_foto/0/0/3/003494/4444591586b5073abdc9fa8235b53df8.jpg?auto=compress&cs=tinysrgb&w=400&h=400&fit=crop"
+                  src="/profil.png"
                   alt={t.hero.imageAlt}
                   className="w-full h-full object-cover rounded-full"
                 />
