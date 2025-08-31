@@ -51,7 +51,7 @@ function App() {
 				/>
 			</div>
               <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Ali Emre
+                Ali Emre Çaylak
               </div>
             </div>
             <div className="hidden md:flex space-x-8">
@@ -142,7 +142,7 @@ function App() {
           </div>
           
           <div className="relative animate-fade-in-right">
-            <div className="relative w-112 h-112 mx-auto">
+            <div className="relative w-104 h-104 mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
               <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-full border-4 border-purple-500/30 flex items-center justify-center overflow-hidden">
                 <img 
