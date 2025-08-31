@@ -45,7 +45,7 @@ function App() {
             <div className="flex items-center space-x-4">
               <div className="w-10 h-10 flex items-center justify-center">
 				<img 
-					src="/footer_logo.ico" 
+					src="/favicon.ico" 
 					alt="Logo" 
 					className="w-10 h-10 rounded-lg object-cover" 
 				/>
@@ -142,7 +142,7 @@ function App() {
           </div>
           
           <div className="relative animate-fade-in-right">
-            <div className="relative w-96 h-96 mx-auto">
+            <div className="relative w-112 h-112 mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
               <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-full border-4 border-purple-500/30 flex items-center justify-center overflow-hidden">
                 <img 
