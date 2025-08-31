@@ -13,7 +13,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     },
     hero: {
       title: 'Ali Emre Çaylak',
-      subtitle: 'Endüstri Mühendisi & Yapay Zeka Uzmanı',
+      subtitle: 'Endüstri Mühendisi & Yapay Zeka Meraklısı',
       description: 'TOBB ETÜ tam burslu öğrencisi, 2022 Google Oyun ve Uygulama Akademisi bursiyeri. Optimizasyon algoritmaları ve yapay zeka alanlarında uzmanlaşıyor.',
       exploreButton: 'Keşfet',
       contactButton: 'İletişim',
@@ -98,6 +98,14 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       title: 'Eğitim',
       degrees: [
         {
+          degree: 'Lisans, Endüstri Mühendisliği',
+          school: 'TOBB Ekonomi ve Teknoloji Üniversitesi',
+          period: 'Eylül 2021 - Nisan 2026',
+          note: 'Tam Burs',
+          gpa: '3.32/4.00',
+          skills: ['Endüstri Mühendisliği', 'Yöneylem Araştırması', 'Kalite Yönetimi', 'Python', 'CPLEX', 'AutoCAD', 'MS Office Programları', 'Yalın Altı Sigma', 'Sistem Simülasyonu', 'Üretim Sistemleri', 'Kalite Kontrol', 'Mühendislik Ekonomisi', 'Üretim Bilgi Sistemleri', 'Proje Yönetimi', 'İş Analizi ve Tasarımı', 'Teknik Resim', 'Hizmet Sistemleri Tasarımı ve Planlaması', 'Tesis Tasarımı ve Planlaması', 'Stokastik Modelleme']
+        },
+		{
           degree: 'Yan Dal Programı, Yapay Zeka Mühendisliği',
           school: 'TOBB Ekonomi ve Teknoloji Üniversitesi',
           period: 'Eylül 2023 - Nisan 2026',
@@ -106,18 +114,10 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           skills: ['Makine Öğrenimi', 'Python', 'Veri Bilimi', 'Java', 'Nesne Yönelimli Programlama', 'Veri Yapıları', 'Matlab']
         },
         {
-          degree: 'Lisans, Endüstri Mühendisliği',
-          school: 'TOBB Ekonomi ve Teknoloji Üniversitesi',
-          period: 'Eylül 2021 - Nisan 2026',
-          note: 'Tam Burs',
-          gpa: '3.32/4.00',
-          skills: ['Endüstri Mühendisliği', 'Yöneylem Araştırması', 'Kalite Yönetimi', 'Python', 'CPLEX', 'AutoCAD', 'MS Office Programları', 'Yalın Altı Sigma', 'Sistem Simülasyonu', 'Üretim Sistemleri', 'Kalite Kontrol', 'Mühendislik Ekonomisi', 'Üretim Bilgi Sistemleri', 'Proje Yönetimi', 'İş Analizi ve Tasarımı', 'Teknik Resim', 'Hizmet Sistemleri Tasarımı ve Planlaması', 'Tesis Tasarımı ve Planlaması', 'Stokastik Modelleme']
-        },
-        {
           degree: 'Fen Lisesi',
           school: 'Ankara Pursaklar Fen Lisesi',
           period: '2017 - 2021',
-          gpa: '93.5/100 (YKS MF Sıralaması: 7337)'
+          gpa: 'YKS MF Sıralaması: 7337'
         }
       ]
     },
