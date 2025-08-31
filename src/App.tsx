@@ -45,7 +45,7 @@ function App() {
             <div className="flex items-center space-x-4">
               <div className="w-10 h-10 flex items-center justify-center">
 				<img 
-					src="/125fdb73-f5dc-4039-89c9-5e2373795c9f.png" 
+					src="/favicon.ico" 
 					alt="Logo" 
 					className="w-10 h-10 rounded-lg object-cover" 
 				/>
