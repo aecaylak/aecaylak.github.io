@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Instagram, Linkedin, Github, ExternalLink, Calendar, Building, GraduationCap, Award, Code, Briefcase, ChevronDown, Star, Zap, Target, Rocket, User, Globe } from 'lucide-react';
+import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Calendar, Building, GraduationCap, Award, Code, Briefcase, ChevronDown, Star, Zap, Target, Rocket, User, Globe } from 'lucide-react';
 import { useLanguage } from './hooks/useLanguage';
 import { content } from './data/content';
 
@@ -83,10 +83,6 @@ function App() {
                 <Globe className="w-4 h-4" />
                 <span className="text-sm font-medium">{language.toUpperCase()}</span>
               </button>
-			  <a href="www.instagram.com" target="_blank" rel="noopener noreferrer" 
-                 className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
-                <Instagram className="w-5 h-5" />
-              </a>
               <a href="https://www.linkedin.com/in/aliemrecaylak" target="_blank" rel="noopener noreferrer" 
                  className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
                 <Linkedin className="w-5 h-5" />

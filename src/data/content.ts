@@ -117,7 +117,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           degree: 'Fen Lisesi',
           school: 'Ankara Pursaklar Fen Lisesi',
           period: '2017 - 2021',
-          gpa: 'YKS MF Sıralaması: 7337'
+          gpa: '93.5/100 | YKS MF Sıralaması: 7337.'
         }
       ]
     },
