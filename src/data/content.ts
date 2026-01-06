@@ -51,7 +51,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       title: 'Deneyim',
       positions: [
         {
-          title: 'Uzun Dönem Stajyer',
+          title: 'Uzun Dönem Veri Analizi Stajyeri',
           company: 'Roketsan',
           period: 'Eylül 2025 - Aralık 2025',
           location: 'Ankara, Türkiye',
@@ -478,7 +478,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       linkedin: 'LinkedIn'
     },
     footer: {
-      copyright: '© 2025 Ali Emre Çaylak. All rights reserved.'
+      copyright: '© 2026 Ali Emre Çaylak. All rights reserved.'
     }
   }
 };
