@@ -13,7 +13,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     },
     hero: {
       title: 'Ali Emre Çaylak',
-      subtitle: 'Endüstri Mühendisi & Yapay Zeka Yan Dal',
+      subtitle: 'Yapay Zeka odaklı Endüstri Mühendisi',
       description: 'TOBB ETÜ Tam Burslu Endüstri Mühendisliği Lisans ve Yapay Zeka Mühendisliği Yan Dal Mezunudur. Optimizasyon, Simulasyon ve Makine Öğrenmesi alanlarında uzmanlaşmıştır.',
       exploreButton: 'Keşfet',
       contactButton: 'İletişim',
@@ -23,8 +23,8 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       title: 'Hakkımda',
       paragraphs: [
         'Ali Emre Çaylak; TOBB ETÜ tam burslu endüstri mühendisliği lisans ve yapay zeka mühendisliği dan dal mezunudur. 2022 Google Oyun ve Uygulama Akademisi bursiyeri, Ankara Pursaklar Fen lisesi mezunudur.',
-        'Endüstri mühendisliği araçlarına, Java ve Python dillerine hakimdir. Beko BMİ\'de, 2025 bahar döneminde TUSAŞ\'ta ve 2025 güz döneminde Roketsan\'da 70 iş günü uzun dönem stajlarını tamamlamıştır. Gerçekleştirdiği ve geliştirmekte olduğu girişimleri ile aktif, problem çözme odaklıdır ve analitik becerileri gelişmiş birisidir.',
-        'Optimizasyon, simulasyon ve makine öğrenmesi üzerine çalışmaları devam etmektedir. TUSAŞ\'ta yapmış olduğu kompozit malzeme dizilim hesaplama optimizasyonu projsi patentlenme aşamasındadır. İstanbul Havalimanı yer hizmetleri personellerinin vardiya ataması lisans bitirme projesini başarı ile tamamlamıştır. Facebook tarafından geliştirilen Spark AR Studio programında ilk Türkçe kaynağı üretmiş ve eğitim hazırlamıştır.'
+        'Endüstri mühendisliği araçlarına, Java ve Python dillerine hakimdir. Beko BMİ\'de, 2025 bahar döneminde TUSAŞ\'ta ve 2025 güz döneminde Roketsan\'da 70 iş günü uzun dönem stajlarını tamamlamıştır. Gerçekleştirdiği ve geliştirmekte olduğu girişimleri ile aktif, problem çözme odaklı ve analitik becerileri gelişmiş birisidir.',
+        'Optimizasyon, agent tabanlı simülasyon ve makine öğrenmesi üzerine çalışmaları devam etmektedir. TUSAŞ\'ta yapmış olduğu kompozit malzeme dizilim hesaplama optimizasyonu projesi patentlenme aşamasındadır. İstanbul Havalimanı yer hizmetleri personellerinin vardiya ataması lisans bitirme projesini başarı ile tamamlamıştır. Facebook tarafından geliştirilen Spark AR Studio programında ilk Türkçe kaynağı üretmiş ve eğitim hazırlamıştır.'
       ],
       location: 'Konum',
       interests: {
@@ -33,6 +33,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           'Endüstri Mühendisliği',
           'Yapay Zeka & Makine Öğrenimi',
           'Optimizasyon Algoritmaları',
+		  'Agent tabanlı Simülasyon',
           'Proje & Ürün Yönetimi',
           'Girişimcilik'
         ]
@@ -51,12 +52,12 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       title: 'Deneyim',
       positions: [
         {
-          title: 'Uzun Dönem Veri Analizi Stajyeri',
+          title: 'İleri Planlama ve Veri Analizi Stajyeri',
           company: 'Roketsan',
           period: 'Eylül 2025 - Aralık 2025',
           location: 'Ankara, Türkiye',
           role: 'Mühendis',
-          skills: ['Endüstri Mühendisliği'],
+          skills: ['Veri Analizi','Apache Superset','SQL','Tedarik Zinciri Optimizasyonu','Python'],
           duration: '70 iş günü'
         },
         {
@@ -76,21 +77,6 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           role: 'Proje Yönetimi & Pazarlama',
           skills: ['Çevik Proje Yönetimi', 'Pazarlama Araştırması', 'Proje Yönetimi', 'Python', 'Ürün Yönetimi'],
           duration: '70 iş günü'
-        },
-        {
-          title: 'Eğitmen',
-          company: 'Udemy',
-          period: '2020 - 2021',
-          location: 'Ankara, Türkiye',
-          role: 'Spark AR ile Sıfırdan Instagram Filtresi Tasarlama',
-          skills: ['Spark AR', 'Analitik Beceriler', 'Eğitim']
-        },
-        {
-          title: 'Editör',
-          company: 'Sosyazete',
-          period: '2019 - 2020',
-          location: 'Ankara, Türkiye',
-          skills: ['İletişim', 'Analitik Beceriler']
         }
       ]
     },
@@ -110,7 +96,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           school: 'TOBB Ekonomi ve Teknoloji Üniversitesi',
           period: 'Eylül 2023 - Nisan 2026',
           note: 'Tam Burs',
-          gpa: '2.71/4.00',
+          gpa: '2.38/4.00',
           skills: ['Makine Öğrenimi', 'Python', 'Veri Bilimi', 'Java', 'Nesne Yönelimli Programlama', 'Veri Yapıları', 'Matlab']
         },
         {
@@ -128,6 +114,8 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
         languages: [
           { name: 'Python', level: 5 },
           { name: 'Java', level: 4 },
+          { name: 'SQL', level: 3 },
+          { name: 'Dart', level: 2 },
           { name: 'C', level: 2 },
           { name: 'C#', level: 1 },
           { name: 'Matlab', level: 2 }
@@ -135,17 +123,18 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       },
       technologies: {
         title: 'Teknolojiler',
-        items: ['Yapay Zeka Modelleri', 'Arena', 'Optimizasyon Algoritmaları', 'MS Office Programları', 'n8n', 'Otomasyon Araçları', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Minitab', 'PowerBI']
+        items: ['Yapay Zeka Modelleri', 'Agent Tabanlı Simülasyon', 'Çok platformlu uygulama geliştirme', 'Optimizasyon Algoritmaları', 'MS Office Programları', 'Otomasyon Araçları', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Superset', 'PowerBI']
       },
       expertise: {
         title: 'Uzmanlık',
         items: [
           'Makine Öğrenimi',
           'Optimizasyon Algoritmaları',
+		  'Yöneylem Araştırması',
           'Proje Yönetimi',
           'Ürün Yönetimi',
-          'Kalite Yönetimi',
-          'Yöneylem Araştırması',
+		  'Mobil ve Web Uygulama Geliştirme',
+          'Simülasyon',
           'Yapay Zeka',
           'E-Ticaret ve Reklamcılık'
         ]
