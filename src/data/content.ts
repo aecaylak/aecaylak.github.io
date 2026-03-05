@@ -13,8 +13,8 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     },
     hero: {
       title: 'Ali Emre Çaylak',
-      subtitle: 'Endüstri Mühendisi & Yapay Zeka Meraklısı',
-      description: 'TOBB ETÜ tam burslu öğrencisi, 2022 Google Oyun ve Uygulama Akademisi bursiyeri. Optimizasyon algoritmaları ve yapay zeka alanlarında uzmanlaşıyor.',
+      subtitle: 'Endüstri Mühendisi & Yapay Zeka Yan Dal',
+      description: 'TOBB ETÜ Tam Burslu Endüstri Mühendisliği Lisans ve Yapay Zeka Mühendisliği Yan Dal Mezunudur. Optimizasyon, Simulasyon ve Makine Öğrenmesi alanlarında uzmanlaşmıştır.',
       exploreButton: 'Keşfet',
       contactButton: 'İletişim',
       imageAlt: 'Ali Emre Çaylak Profil Fotoğrafı'
@@ -22,9 +22,9 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     about: {
       title: 'Hakkımda',
       paragraphs: [
-        'Ali Emre Çaylak; TOBB ETÜ tam burslu Endüstri Mühendisliği, Yapay Zeka Mühendisliği Yan Dal öğrencisidir. 2022 Google Oyun ve Uygulama Akademisi bursiyeri, Ankara Pursaklar Fen lisesi mezunudur.',
-        'Endüstri mühendisliği araçlarına, Java ve Python dillerine hakimdir. 2024 yaz döneminde Beko Global\'de, 2025 bahar döneminde TUSAŞ\'ta ve 2025 güz döneminde Roketsan\'da 70 iş günü uzun dönem stajlarını tamamlamıştır.',
-        'Kompozit malzeme dizilim hesaplama optimizasyonları üzerine çalışmış ve projesi patentlenme aşamasındadır. Endüstri mühendisliği dallarında takımlı projeler yapmış, başarı ile sonuçlandırmıştır. Makine öğrenimi üzerinde kendini geliştirmektedir. Facebook tarafından geliştirilen Spark AR Studio programında ilk Türkçe kaynağı üretmiş ve eğitim hazırlamıştır.'
+        'Ali Emre Çaylak; TOBB ETÜ tam burslu endüstri mühendisliği lisans ve yapay zeka mühendisliği dan dal mezunudur. 2022 Google Oyun ve Uygulama Akademisi bursiyeri, Ankara Pursaklar Fen lisesi mezunudur.',
+        'Endüstri mühendisliği araçlarına, Java ve Python dillerine hakimdir. Beko BMİ\'de, 2025 bahar döneminde TUSAŞ\'ta ve 2025 güz döneminde Roketsan\'da 70 iş günü uzun dönem stajlarını tamamlamıştır. Gerçekleştirdiği ve geliştirmekte olduğu girişimleri ile aktif, problem çözme odaklıdır ve analitik becerileri gelişmiş birisidir.',
+        'Optimizasyon, simulasyon ve makine öğrenmesi üzerine çalışmaları devam etmektedir. TUSAŞ\'ta yapmış olduğu kompozit malzeme dizilim hesaplama optimizasyonu projsi patentlenme aşamasındadır. İstanbul Havalimanı yer hizmetleri personellerinin vardiya ataması lisans bitirme projesini başarı ile tamamlamıştır. Facebook tarafından geliştirilen Spark AR Studio programında ilk Türkçe kaynağı üretmiş ve eğitim hazırlamıştır.'
       ],
       location: 'Konum',
       interests: {
