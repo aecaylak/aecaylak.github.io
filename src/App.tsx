@@ -549,7 +549,7 @@ function App() {
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105">
                 <Mail className="w-8 h-8 text-purple-400 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-white mb-2">{t.contact.email}</h3>
-                <p className="text-gray-300">hello@aliemre.xyz</p>
+                <p className="text-gray-400">hello@aliemre.xyz</p>
                 <p className="text-gray-500 text-sm mt-1">aliemrecaylak@gmail.com</p>
               </div>
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105">
