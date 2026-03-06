@@ -198,12 +198,14 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           title: 'İstanbul Havalimanı Yer Hizmetleri Personeli Çizelgeleme (Lisans Bitirme Projesi)',
           description: 'İstanbul Havalimanı yolcu sayısı tahminleme, güvenlik noktası simulasyonu ve güvenlik personelleri için çok kriterli işgücü optimizasyonu karar destek mekanizması.',
           skills: ['Makine Öğrenmesi', 'Ajan Tabanlı Simülasyon', 'Optimizasyon Algoritmaları', 'Lineer Programlama'],
+          badgeText: 'Lisans Bitirme Projesi',
           featured: true
         },
         {
           title: 'Kompozit Malzeme Optimizasyonu (Patent Sürecinde)',
           description: 'Kompozit malzeme dizilim hesaplama optimizasyonları üzerine geliştirilen proje. Patent başvurusu yapılmış durumda.',
           skills: ['Python', 'Optimizasyon Algoritmaları', 'Kompozitler', 'Sezgisel Algoritmalar'],
+          badgeText: 'Patent Sürecinde',
           featured: true
         },
         {
@@ -439,6 +441,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           title: 'Composite Material Optimization',
           description: 'A project developed on composite material layout calculation optimizations. Patent application has been submitted.',
           skills: ['Python', 'Optimization Algorithms', 'Composites', 'Patent'],
+          badgeText: 'In Patent Process',
           featured: true
         },
         {
