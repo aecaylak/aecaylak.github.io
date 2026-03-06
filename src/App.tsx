@@ -44,12 +44,12 @@ function App() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <div className="w-10 h-10 flex items-center justify-center">
-				<img 
-					src="/favicon.ico" 
-					alt="Logo" 
-					className="w-10 h-10 rounded-lg object-cover" 
-				/>
-			</div>
+                <img
+                  src="/favicon.ico"
+                  alt="Logo"
+                  className="w-10 h-10 rounded-lg object-cover"
+                />
+              </div>
               <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
                 Ali Emre Çaylak
               </div>
@@ -67,9 +67,8 @@ function App() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-sm transition-all duration-300 hover:text-purple-400 ${
-                    activeSection === item.id ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-300'
-                  }`}
+                  className={`text-sm transition-all duration-300 hover:text-purple-400 ${activeSection === item.id ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-300'
+                    }`}
                 >
                   {item.label}
                 </button>
@@ -83,12 +82,12 @@ function App() {
                 <Globe className="w-4 h-4" />
                 <span className="text-sm font-medium">{language.toUpperCase()}</span>
               </button>
-              <a href="https://www.linkedin.com/in/aliemrecaylak" target="_blank" rel="noopener noreferrer" 
-                 className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <a href="https://www.linkedin.com/in/aliemrecaylak" target="_blank" rel="noopener noreferrer"
+                className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="mailto:aliemrecaylak@gmail.com" 
-                 className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
+              <a href="mailto:aliemrecaylak@gmail.com"
+                className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -104,7 +103,7 @@ function App() {
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-8 animate-fade-in-up">
             <div className="space-y-4">
@@ -120,19 +119,19 @@ function App() {
                 <p className="text-xl text-gray-300">{t.hero.subtitle}</p>
               </div>
             </div>
-            
+
             <p className="text-lg text-gray-400 leading-relaxed max-w-lg">
               {t.hero.description}
             </p>
-            
+
             <div className="flex space-x-6">
-              <button 
+              <button
                 onClick={() => scrollToSection('about')}
                 className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
               >
                 {t.hero.exploreButton}
               </button>
-              <a 
+              <a
                 href="mailto:aliemrecaylak@gmail.com"
                 className="px-8 py-4 border-2 border-purple-500 rounded-full text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition-all duration-300 transform hover:scale-105"
               >
@@ -140,12 +139,12 @@ function App() {
               </a>
             </div>
           </div>
-          
+
           <div className="relative animate-fade-in-right">
             <div className="relative w-104 h-104 mx-auto">
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
               <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-full border-4 border-purple-500/30 flex items-center justify-center overflow-hidden">
-                <img 
+                <img
                   src="/profil.png"
                   alt={t.hero.imageAlt}
                   className="w-full h-full object-cover rounded-full"
@@ -156,7 +155,7 @@ function App() {
             </div>
           </div>
         </div>
-        
+
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
           <button onClick={() => scrollToSection('about')} className="text-purple-400 hover:text-purple-300 transition-colors">
             <ChevronDown className="w-8 h-8" />
@@ -175,7 +174,7 @@ function App() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 animate-fade-in-left">
               {t.about.paragraphs.map((paragraph, index) => (
@@ -186,7 +185,7 @@ function App() {
                 </div>
               ))}
             </div>
-            
+
             <div className="space-y-6 animate-fade-in-right">
               <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-2xl border border-purple-500/30">
                 <h3 className="text-2xl font-bold text-purple-300 mb-4 flex items-center">
@@ -195,7 +194,7 @@ function App() {
                 </h3>
                 <p className="text-gray-300">Ankara, Türkiye</p>
               </div>
-              
+
               <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-2xl border border-purple-500/30">
                 <h3 className="text-2xl font-bold text-purple-300 mb-4 flex items-center">
                   <Star className="w-6 h-6 mr-3" />
@@ -210,7 +209,7 @@ function App() {
                   ))}
                 </div>
               </div>
-              
+
               <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-2xl border border-purple-500/30">
                 <h3 className="text-2xl font-bold text-purple-300 mb-4">{t.about.languages.title}</h3>
                 <div className="space-y-3">
@@ -246,7 +245,7 @@ function App() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
           </div>
-          
+
           <div className="space-y-8">
             {t.experience.positions.map((exp, index) => (
               <div key={index} className="group animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
@@ -302,7 +301,7 @@ function App() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
           </div>
-          
+
           <div className="space-y-8">
             {t.education.degrees.map((edu, index) => (
               <div key={index} className="group animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
@@ -362,7 +361,7 @@ function App() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
           </div>
-          
+
           <div className="grid md:grid-cols-3 gap-8">
             <div className="animate-fade-in-left">
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105 h-full">
@@ -376,11 +375,10 @@ function App() {
                       <span className="text-gray-300">{lang.name}</span>
                       <div className="flex space-x-1">
                         {[...Array(5)].map((_, i) => (
-                          <div key={i} className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                            i < lang.level 
-                              ? 'bg-purple-500' 
+                          <div key={i} className={`w-2 h-2 rounded-full transition-all duration-300 ${i < lang.level
+                              ? 'bg-purple-500'
                               : 'bg-gray-600'
-                          } group-hover:scale-125`}></div>
+                            } group-hover:scale-125`}></div>
                         ))}
                       </div>
                     </div>
@@ -388,7 +386,7 @@ function App() {
                 </div>
               </div>
             </div>
-            
+
             <div className="animate-fade-in-up">
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105 h-full">
                 <h3 className="text-2xl font-bold text-purple-300 mb-6 flex items-center">
@@ -404,7 +402,7 @@ function App() {
                 </div>
               </div>
             </div>
-            
+
             <div className="animate-fade-in-right">
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105 h-full">
                 <h3 className="text-2xl font-bold text-purple-300 mb-6 flex items-center">
@@ -438,15 +436,14 @@ function App() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
           </div>
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.certifications.items.map((cert, index) => (
               <div key={index} className={`group animate-fade-in-up ${cert.featured ? 'md:col-span-2 lg:col-span-1' : ''}`} style={{ animationDelay: `${index * 100}ms` }}>
-                <div className={`bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-full ${
-                  cert.featured 
-                    ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20' 
+                <div className={`bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-full ${cert.featured
+                    ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20'
                     : 'border-purple-500/20 hover:border-purple-500/40 hover:shadow-purple-500/20'
-                }`}>
+                  }`}>
                   {cert.featured && (
                     <div className="flex items-center mb-3">
                       <Star className="w-5 h-5 text-yellow-400 mr-2" />
@@ -485,19 +482,18 @@ function App() {
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8">
             {t.projects.items.map((project, index) => (
               <div key={index} className="group animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
-                <div className={`bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-full ${
-                  project.featured 
-                    ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20' 
+                <div className={`bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-full ${project.featured
+                    ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20'
                     : 'border-purple-500/20 hover:border-purple-500/40 hover:shadow-purple-500/20'
-                }`}>
+                  }`}>
                   {project.featured && (
                     <div className="flex items-center mb-4">
                       <Star className="w-5 h-5 text-yellow-400 mr-2" />
-                      <span className="text-yellow-400 text-sm font-semibold">{t.projects.patentApplication}</span>
+                      <span className="text-yellow-400 text-sm font-semibold">{project.badgeText || t.projects.patentApplication}</span>
                     </div>
                   )}
                   <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300">
@@ -531,24 +527,24 @@ function App() {
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-12"></div>
-            
+
             <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
               {t.contact.description}
             </p>
-            
+
             <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-16">
               <a href="https://www.linkedin.com/in/aliemrecaylak" target="_blank" rel="noopener noreferrer"
-                 className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-purple-500/25">
+                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-purple-500/25">
                 <Linkedin className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
                 {t.contact.linkedinProfile}
               </a>
               <a href="mailto:aliemrecaylak@gmail.com"
-                 className="group inline-flex items-center px-8 py-4 border-2 border-purple-500 rounded-full text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition-all duration-300 transform hover:scale-110">
+                className="group inline-flex items-center px-8 py-4 border-2 border-purple-500 rounded-full text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition-all duration-300 transform hover:scale-110">
                 <Mail className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
                 {t.contact.sendEmail}
               </a>
             </div>
-            
+
             <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105">
                 <Mail className="w-8 h-8 text-purple-400 mx-auto mb-4" />

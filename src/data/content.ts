@@ -33,7 +33,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           'Endüstri Mühendisliği',
           'Yapay Zeka & Makine Öğrenimi',
           'Optimizasyon Algoritmaları',
-		  'Agent tabanlı Simülasyon',
+          'Agent tabanlı Simülasyon',
           'Proje & Ürün Yönetimi',
           'Girişimcilik'
         ]
@@ -57,7 +57,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           period: 'Eylül 2025 - Aralık 2025',
           location: 'Ankara, Türkiye',
           role: 'Mühendis',
-          skills: ['Veri Analizi','Apache Superset','SQL','Tedarik Zinciri Optimizasyonu','Python'],
+          skills: ['Veri Analizi', 'Apache Superset', 'SQL', 'Tedarik Zinciri Optimizasyonu', 'Python'],
           duration: '70 iş günü'
         },
         {
@@ -91,7 +91,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           gpa: '3.32/4.00',
           skills: ['Endüstri Mühendisliği', 'Yöneylem Araştırması', 'Kalite Yönetimi', 'Python', 'CPLEX', 'AutoCAD', 'MS Office Programları', 'Yalın Altı Sigma', 'Sistem Simülasyonu', 'Üretim Sistemleri', 'Kalite Kontrol', 'Mühendislik Ekonomisi', 'Üretim Bilgi Sistemleri', 'Proje Yönetimi', 'İş Analizi ve Tasarımı', 'Teknik Resim', 'Hizmet Sistemleri Tasarımı ve Planlaması', 'Tesis Tasarımı ve Planlaması', 'Stokastik Modelleme']
         },
-		{
+        {
           degree: 'Yan Dal Programı, Yapay Zeka Mühendisliği',
           school: 'TOBB Ekonomi ve Teknoloji Üniversitesi',
           period: 'Eylül 2023 - Nisan 2026',
@@ -130,10 +130,10 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
         items: [
           'Makine Öğrenimi',
           'Optimizasyon Algoritmaları',
-		  'Yöneylem Araştırması',
+          'Yöneylem Araştırması',
           'Proje Yönetimi',
           'Ürün Yönetimi',
-		  'Mobil ve Web Uygulama Geliştirme',
+          'Mobil ve Web Uygulama Geliştirme',
           'Simülasyon',
           'Yapay Zeka',
           'E-Ticaret ve Reklamcılık'
@@ -194,16 +194,18 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       title: 'Öne Çıkan Projeler',
       patentApplication: '',
       items: [
-	    {
+        {
           title: 'İstanbul Havalimanı Yer Hizmetleri Personeli Çizelgeleme (Lisans Bitirme Projesi)',
           description: 'Kompozit malzeme dizilim hesaplama optimizasyonları üzerine geliştirilen proje. Patent başvurusu yapılmış durumda.',
           skills: ['Python', 'Optimizasyon Algoritmaları', 'Kompozitler', 'Patent'],
+          badgeText: 'Lisans Bitirme Projesi',
           featured: true
         },
         {
           title: 'Kompozit Malzeme Optimizasyonu (Patent Sürecinde)',
           description: 'Kompozit malzeme dizilim hesaplama optimizasyonları üzerine geliştirilen proje. Patent başvurusu yapılmış durumda.',
           skills: ['Python', 'Optimizasyon Algoritmaları', 'Kompozitler', 'Patent'],
+          badgeText: 'Patent Sürecinde',
           featured: true
         },
         {
@@ -439,6 +441,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           title: 'Composite Material Optimization',
           description: 'A project developed on composite material layout calculation optimizations. Patent application has been submitted.',
           skills: ['Python', 'Optimization Algorithms', 'Composites', 'Patent'],
+          badgeText: 'In Patent Process',
           featured: true
         },
         {

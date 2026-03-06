@@ -96,6 +96,7 @@ export interface LanguageContent {
       title: string;
       description: string;
       skills: string[];
+      badgeText?: string;
       featured?: boolean;
     }>;
   };
