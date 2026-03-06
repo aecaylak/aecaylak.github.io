@@ -194,6 +194,12 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       title: 'Öne Çıkan Projeler',
       patentApplication: 'Patent Başvurusu',
       items: [
+	    {
+          title: 'İstanbul Havalimanı Yer Hizmetleri Personeli Çizelgeleme (Lisans Bitirme Projesi)',
+          description: 'Kompozit malzeme dizilim hesaplama optimizasyonları üzerine geliştirilen proje. Patent başvurusu yapılmış durumda.',
+          skills: ['Python', 'Optimizasyon Algoritmaları', 'Kompozitler', 'Patent'],
+          featured: true
+        },
         {
           title: 'Kompozit Malzeme Optimizasyonu',
           description: 'Kompozit malzeme dizilim hesaplama optimizasyonları üzerine geliştirilen proje. Patent başvurusu yapılmış durumda.',
@@ -202,18 +208,13 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
         },
         {
           title: 'Endüstri Mühendisliği Projeleri',
-          description: 'Kalite, simulasyon ve yöneylem araştırmaları gibi endüstri mühendisliği konularında takım halinde gerçekleştirilen çeşitli projeler.',
+          description: 'Kalite, tesis planlama, simülasyon, yalın 6 sigma ve yöneylem araştırması konularında gerçekleştirilen çeşitli ders projeleri.',
           skills: ['Kalite Kontrol', 'Simülasyon', 'Yöneylem Araştırması', 'Proje Yönetimi', 'İş Analizi ve Tasarımı']
         },
         {
           title: 'Makine Öğrenimi Projeleri',
-          description: 'Yapay zeka ve makine öğrenimi alanında geliştirilen çeşitli projeler ve araştırmalar.',
+          description: 'Yapay zeka, makine öğrenimi, veri yapıları ve algoritma alanlarında geliştirilen çeşitli projeler ve araştırmalar.',
           skills: ['Makine Öğrenimi', 'Python', 'Java', 'MatLab']
-        },
-        {
-          title: 'Spark AR Instagram Filtreleri',
-          description: 'Facebook Spark AR Studio ile Instagram ve Facebook filtreleri geliştirme. İlk Türkçe kaynak ve eğitim içeriği üretimi.',
-          skills: ['Spark AR', '3D Animasyon', 'Eğitim', 'Instagram']
         }
       ]
     },
