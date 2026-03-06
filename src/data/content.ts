@@ -13,7 +13,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     },
     hero: {
       title: 'Ali Emre Çaylak',
-      subtitle: 'Yapay Zeka odaklı Endüstri Mühendisi',
+      subtitle: 'Yapay Zeka Odaklı Endüstri Mühendisi',
       description: 'TOBB ETÜ Tam Burslu Endüstri Mühendisliği Lisans ve Yapay Zeka Mühendisliği Yan Dal Mezunudur. Optimizasyon, Simulasyon ve Makine Öğrenmesi alanlarında uzmanlaşmıştır.',
       exploreButton: 'Keşfet',
       contactButton: 'İletişim',
@@ -195,14 +195,14 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       patentApplication: '',
       items: [
         {
-          title: 'İstanbul Havalimanı Yer Hizmetleri Personeli Çizelgeleme (Lisans Bitirme Projesi)',
+          title: 'İstanbul Havalimanı Yer Hizmetleri Personeli Çizelgeleme',
           description: 'İstanbul Havalimanı yolcu sayısı tahminleme, güvenlik noktası simulasyonu ve güvenlik personelleri için çok kriterli işgücü optimizasyonu karar destek mekanizması.',
           skills: ['Makine Öğrenmesi', 'Ajan Tabanlı Simülasyon', 'Optimizasyon Algoritmaları', 'Lineer Programlama'],
           badgeText: 'Lisans Bitirme Projesi',
           featured: true
         },
         {
-          title: 'Kompozit Malzeme Optimizasyonu (Patent Sürecinde)',
+          title: 'Kompozit Malzeme Optimizasyonu',
           description: 'Kompozit malzeme dizilim hesaplama optimizasyonları üzerine geliştirilen proje. Patent başvurusu yapılmış durumda.',
           skills: ['Python', 'Optimizasyon Algoritmaları', 'Kompozitler', 'Sezgisel Algoritmalar'],
           badgeText: 'Patent Sürecinde',
@@ -245,8 +245,8 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     },
     hero: {
       title: 'Ali Emre Çaylak',
-      subtitle: 'Industrial Engineer & AI Specialist',
-      description: 'Full scholarship student at TOBB ETU, 2022 Google Game and Application Academy scholar. Specializing in optimization algorithms and artificial intelligence.',
+      subtitle: 'AI-Focused Industrial Engineer',
+      description: 'Industrial Engineering graduate with a minor in AI Engineering from TOBB ETU (Full Scholarship). Specialized in Optimization, Simulation, and Machine Learning.',
       exploreButton: 'Explore',
       contactButton: 'Contact',
       imageAlt: 'Ali Emre Çaylak Profile Photo'
@@ -254,17 +254,18 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     about: {
       title: 'About Me',
       paragraphs: [
-        'Ali Emre Çaylak is a full scholarship Industrial Engineering student with a minor in Artificial Intelligence Engineering at TOBB ETU. He is a 2022 Google Game and Application Academy scholar and graduated from Ankara Pursaklar Science High School.',
-        'He is proficient in industrial engineering tools, Java and Python programming languages. He completed 70-day long-term internships at Beko Global in summer 2024, TUSAŞ in spring 2025, and Roketsan in fall 2025.',
-        'He has worked on composite material layout calculation optimizations and his project is in the patent application process. He has successfully completed team projects in various industrial engineering fields. He is developing himself in machine learning. He created the first Turkish resource and training for Spark AR Studio developed by Facebook.'
+        'Ali Emre Çaylak is a full scholarship Industrial Engineering graduate with a minor in Artificial Intelligence Engineering from TOBB ETU. He is a 2022 Google Game and Application Academy scholar and a graduate of Ankara Pursaklar Science High School.',
+        'He is proficient in industrial engineering tools as well as Java and Python. He completed 70-day long-term internships at Beko BMİ in summer 2024, TUSAŞ in spring 2025, and Roketsan in fall 2025. He is an active, problem-solving, and analytically-minded individual with several ongoing entrepreneurial ventures.',
+        'He continues his work in optimization, agent-based simulation, and machine learning. His project on composite material layout calculation optimization at TUSAŞ is currently in the patent application process. He successfully completed his graduation project on shift assignment for ground handling personnel at Istanbul Airport. He also authored the first Turkish resource and training for Facebook\'s Spark AR Studio.'
       ],
       location: 'Location',
       interests: {
         title: 'Interests',
         items: [
           'Industrial Engineering',
-          'Artificial Intelligence & Machine Learning',
+          'AI & Machine Learning',
           'Optimization Algorithms',
+          'Agent-based Simulation',
           'Project & Product Management',
           'Entrepreneurship'
         ]
@@ -283,12 +284,12 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       title: 'Experience',
       positions: [
         {
-          title: 'Long Term Intern',
+          title: 'Advanced Planning and Data Analysis Intern',
           company: 'Roketsan',
           period: 'September 2025 - December 2025',
           location: 'Ankara, Turkey',
           role: 'Engineer',
-          skills: ['Industrial Engineering'],
+          skills: ['Data Analysis', 'Apache Superset', 'SQL', 'Supply Chain Optimization', 'Python'],
           duration: '70 business days'
         },
         {
@@ -301,28 +302,13 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           duration: '70 business days'
         },
         {
-          title: 'Research And Development Engineering Intern',
+          title: 'R&D Engineering Intern',
           company: 'Beko Corporate',
           period: 'May 2024 - August 2024',
           location: 'Ankara, Turkey',
           role: 'Project Management & Marketing',
           skills: ['Agile Project Management', 'Marketing Research', 'Project Management', 'Python', 'Product Management'],
           duration: '70 business days'
-        },
-        {
-          title: 'Instructor',
-          company: 'Udemy',
-          period: '2020 - 2021',
-          location: 'Ankara, Turkey',
-          role: 'Creating Instagram Filters from Scratch with Spark AR',
-          skills: ['Spark AR', 'Analytical Skills', 'Education']
-        },
-        {
-          title: 'Editor',
-          company: 'Sosyazete',
-          period: '2019 - 2020',
-          location: 'Ankara, Turkey',
-          skills: ['Communication', 'Analytical Skills']
         }
       ]
     },
@@ -330,26 +316,26 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       title: 'Education',
       degrees: [
         {
-          degree: 'Minor Program, Artificial Intelligence Engineering',
-          school: 'TOBB University of Economics and Technology',
-          period: 'September 2023 - April 2026',
-          note: 'Full Scholarship',
-          gpa: '2.71/4.00',
-          skills: ['Machine Learning', 'Python', 'Data Science', 'Java', 'Object-Oriented Programming', 'Data Structures', 'Matlab']
-        },
-        {
-          degree: 'Bachelor\'s degree, Industrial Engineering',
+          degree: 'B.Sc., Industrial Engineering',
           school: 'TOBB University of Economics and Technology',
           period: 'September 2021 - April 2026',
           note: 'Full Scholarship',
           gpa: '3.32/4.00',
-          skills: ['Industrial Engineering', 'Operations Research', 'Quality Management', 'Python', 'CPLEX', 'AutoCAD', 'MS Office Programs', 'Lean Six Sigma', 'System Simulation', 'Production Systems', 'Quality Control', 'Engineering Economics', 'Production Information Systems', 'Project Management', 'Work Analysis and Design', 'Technical Drawing', 'Service Systems Design and Planning', 'Facilities Design and Planning', 'Stochastic Modeling']
+          skills: ['Industrial Engineering', 'Operations Research', 'Quality Management', 'Python', 'CPLEX', 'AutoCAD', 'MS Office', 'Lean Six Sigma', 'System Simulation', 'Production Systems', 'Quality Control', 'Engineering Economics', 'Production Info Systems', 'Project Management', 'Work Analysis & Design', 'Technical Drawing', 'Service Systems Planning', 'Facility Design', 'Stochastic Modeling']
+        },
+        {
+          degree: 'Minor, Artificial Intelligence Engineering',
+          school: 'TOBB University of Economics and Technology',
+          period: 'September 2023 - April 2026',
+          note: 'Full Scholarship',
+          gpa: '2.38/4.00',
+          skills: ['Machine Learning', 'Python', 'Data Science', 'Java', 'OOP', 'Data Structures', 'Matlab']
         },
         {
           degree: 'Science High School',
           school: 'Ankara Pursaklar Science High School',
           period: '2017 - 2021',
-          gpa: '93.5/100 (YKS MF Ranking: 7337)'
+          gpa: '93.5/100 | YKS Ranking: 7337'
         }
       ]
     },
@@ -360,6 +346,8 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
         languages: [
           { name: 'Python', level: 5 },
           { name: 'Java', level: 4 },
+          { name: 'SQL', level: 3 },
+          { name: 'Dart', level: 2 },
           { name: 'C', level: 2 },
           { name: 'C#', level: 1 },
           { name: 'Matlab', level: 2 }
@@ -367,19 +355,20 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       },
       technologies: {
         title: 'Technologies',
-        items: ['AI Models', 'Arena', 'Optimization Algorithms', 'MS Office Programs', 'n8n', 'Automation Tools', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Minitab', 'PowerBI']
+        items: ['AI Models', 'Agent-Based Simulation', 'Cross-Platform Development', 'Optimization Algorithms', 'MS Office', 'Automation Tools', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Superset', 'PowerBI']
       },
       expertise: {
         title: 'Expertise',
         items: [
           'Machine Learning',
           'Optimization Algorithms',
+          'Operations Research',
           'Project Management',
           'Product Management',
-          'Quality Management',
-          'Operations Research',
+          'Mobile & Web Development',
+          'Simulation',
           'Artificial Intelligence',
-          'E-Commerce and Advertising'
+          'E-Commerce & Advertising'
         ]
       }
     },
@@ -388,10 +377,10 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       featured: 'Featured',
       items: [
         {
-          title: 'Project Management Specialization',
+          title: 'Project Management Professionalism',
           issuer: 'Google',
           date: 'June 2022',
-          skills: ['Project Management', 'Agile Project Management', 'Scrum', 'Change Management', 'Team Management', 'Project Management Life Cycle', 'Quality Management', 'Project Documentation', 'Continuous Improvement Process', 'Project Planning'],
+          skills: ['Project Management', 'Agile', 'Scrum', 'Change Management', 'Team Management', 'Lifecycle Management', 'Quality Management', 'Documentation', 'Continuous Improvement', 'Planning'],
           featured: true
         },
         {
@@ -402,32 +391,32 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           featured: true
         },
         {
-          title: 'Google Game and Application Academy: Technology Entrepreneurship',
+          title: 'Google Game & App Academy: Tech Entrepreneurship',
           issuer: 'Google',
           date: 'July 2022',
           skills: ['Entrepreneurship']
         },
         {
-          title: 'Google Game and Application Academy: Game Development with Unity',
+          title: 'Google Game & App Academy: Game Development with Unity',
           issuer: 'Google',
           date: 'July 2022',
           skills: ['Unity', 'C#']
         },
         {
-          title: 'Project and Risk Management',
+          title: 'Project & Risk Management',
           issuer: 'BTK Academy',
           date: 'March 2024',
           skills: ['Risk Management']
         },
         {
-          title: 'Version Control: Git and GitHub',
+          title: 'Version Control: Git & GitHub',
           issuer: 'BTK Academy',
           date: 'May 2022',
           skills: ['Git']
         },
         {
-          title: 'Programming and Design with Arduino',
-          issuer: 'Republic of Turkey Ministry of National Education',
+          title: 'Arduino Programming & Design',
+          issuer: 'Ministry of National Education',
           date: 'May 2019',
           skills: ['Arduino']
         }
@@ -435,35 +424,37 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     },
     projects: {
       title: 'Featured Projects',
-      patentApplication: 'Patent Application',
+      patentApplication: '',
       items: [
+        {
+          title: 'Istanbul Airport Ground Services Personnel Scheduling',
+          description: 'Passenger demand forecasting, security checkpoint simulation, and a multi-criteria workforce optimization decision support mechanism for security personnel at Istanbul Airport.',
+          skills: ['Machine Learning', 'Agent-Based Simulation', 'Optimization Algorithms', 'Linear Programming'],
+          badgeText: 'Graduation Project',
+          featured: true
+        },
         {
           title: 'Composite Material Optimization',
           description: 'A project developed on composite material layout calculation optimizations. Patent application has been submitted.',
-          skills: ['Python', 'Optimization Algorithms', 'Composites', 'Patent'],
+          skills: ['Python', 'Optimization Algorithms', 'Composites', 'Heuristic Algorithms'],
           badgeText: 'In Patent Process',
           featured: true
         },
         {
           title: 'Industrial Engineering Projects',
-          description: 'Various team projects in industrial engineering topics such as quality, simulation and operations research.',
-          skills: ['Quality Control', 'Simulation', 'Operations Research', 'Project Management', 'Work Analysis and Design']
+          description: 'Various course projects in quality control, facility planning, simulation, lean six sigma, and operations research.',
+          skills: ['Quality Control', 'Simulation', 'Operations Research', 'Project Management', 'Work Analysis & Design']
         },
         {
           title: 'Machine Learning Projects',
-          description: 'Various projects and research developed in the field of artificial intelligence and machine learning.',
+          description: 'Various projects and research in the fields of AI, machine learning, data structures, and algorithms.',
           skills: ['Machine Learning', 'Python', 'Java', 'MatLab']
-        },
-        {
-          title: 'Spark AR Instagram Filters',
-          description: 'Developing Instagram and Facebook filters with Facebook Spark AR Studio. Creating the first Turkish resource and training content.',
-          skills: ['Spark AR', '3D Animation', 'Education', 'Instagram']
         }
       ]
     },
     contact: {
       title: 'Get In Touch',
-      description: 'Feel free to contact me to learn more about my projects, explore collaboration opportunities, or discuss any topic.',
+      description: 'Contact me to learn more about my projects, explore collaboration opportunities, or for any other inquiries.',
       linkedinProfile: 'LinkedIn Profile',
       sendEmail: 'Send Email',
       email: 'Email',
