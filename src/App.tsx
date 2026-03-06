@@ -86,7 +86,7 @@ function App() {
                 className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="mailto:aliemrecaylak@gmail.com"
+              <a href="mailto:hello@aliemre.xyz"
                 className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
                 <Mail className="w-5 h-5" />
               </a>
@@ -132,7 +132,7 @@ function App() {
                 {t.hero.exploreButton}
               </button>
               <a
-                href="mailto:aliemrecaylak@gmail.com"
+                href="mailto:hello@aliemre.xyz"
                 className="px-8 py-4 border-2 border-purple-500 rounded-full text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition-all duration-300 transform hover:scale-105"
               >
                 {t.hero.contactButton}
@@ -376,8 +376,8 @@ function App() {
                       <div className="flex space-x-1">
                         {[...Array(5)].map((_, i) => (
                           <div key={i} className={`w-2 h-2 rounded-full transition-all duration-300 ${i < lang.level
-                              ? 'bg-purple-500'
-                              : 'bg-gray-600'
+                            ? 'bg-purple-500'
+                            : 'bg-gray-600'
                             } group-hover:scale-125`}></div>
                         ))}
                       </div>
@@ -441,8 +441,8 @@ function App() {
             {t.certifications.items.map((cert, index) => (
               <div key={index} className={`group animate-fade-in-up ${cert.featured ? 'md:col-span-2 lg:col-span-1' : ''}`} style={{ animationDelay: `${index * 100}ms` }}>
                 <div className={`bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-full ${cert.featured
-                    ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20'
-                    : 'border-purple-500/20 hover:border-purple-500/40 hover:shadow-purple-500/20'
+                  ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20'
+                  : 'border-purple-500/20 hover:border-purple-500/40 hover:shadow-purple-500/20'
                   }`}>
                   {cert.featured && (
                     <div className="flex items-center mb-3">
@@ -487,8 +487,8 @@ function App() {
             {t.projects.items.map((project, index) => (
               <div key={index} className="group animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
                 <div className={`bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-full ${project.featured
-                    ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20'
-                    : 'border-purple-500/20 hover:border-purple-500/40 hover:shadow-purple-500/20'
+                  ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20'
+                  : 'border-purple-500/20 hover:border-purple-500/40 hover:shadow-purple-500/20'
                   }`}>
                   {project.featured && (
                     <div className="flex items-center mb-4">
@@ -538,7 +538,7 @@ function App() {
                 <Linkedin className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
                 {t.contact.linkedinProfile}
               </a>
-              <a href="mailto:aliemrecaylak@gmail.com"
+              <a href="mailto:hello@aliemre.xyz"
                 className="group inline-flex items-center px-8 py-4 border-2 border-purple-500 rounded-full text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition-all duration-300 transform hover:scale-110">
                 <Mail className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
                 {t.contact.sendEmail}
@@ -549,7 +549,8 @@ function App() {
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105">
                 <Mail className="w-8 h-8 text-purple-400 mx-auto mb-4" />
                 <h3 className="text-lg font-semibold text-white mb-2">{t.contact.email}</h3>
-                <p className="text-gray-400">aliemrecaylak@gmail.com</p>
+                <p className="text-gray-300">hello@aliemre.xyz</p>
+                <p className="text-gray-500 text-sm mt-1">aliemrecaylak@gmail.com</p>
               </div>
               <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105">
                 <MapPin className="w-8 h-8 text-purple-400 mx-auto mb-4" />
