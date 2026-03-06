@@ -192,7 +192,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     },
     projects: {
       title: 'Öne Çıkan Projeler',
-      patentApplication: 'Patent Başvurusu',
+      patentApplication: '',
       items: [
 	    {
           title: 'İstanbul Havalimanı Yer Hizmetleri Personeli Çizelgeleme (Lisans Bitirme Projesi)',
@@ -201,7 +201,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           featured: true
         },
         {
-          title: 'Kompozit Malzeme Optimizasyonu',
+          title: 'Kompozit Malzeme Optimizasyonu (Patent Sürecinde)',
           description: 'Kompozit malzeme dizilim hesaplama optimizasyonları üzerine geliştirilen proje. Patent başvurusu yapılmış durumda.',
           skills: ['Python', 'Optimizasyon Algoritmaları', 'Kompozitler', 'Patent'],
           featured: true
