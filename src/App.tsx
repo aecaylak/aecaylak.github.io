@@ -1,23 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import { Mail, Phone, MapPin, Linkedin, Github, ExternalLink, Calendar, Building, GraduationCap, Award, Code, Briefcase, ChevronDown, Star, Zap, Target, Rocket, User, Globe } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Mail, Linkedin, ExternalLink, Calendar, MapPin, Globe, ArrowUpRight, ChevronDown, Sparkles, Cpu, Zap, Code, Briefcase, GraduationCap, Award, Building } from 'lucide-react';
 import { useLanguage } from './hooks/useLanguage';
 import { content } from './data/content';
 
 function App() {
+  const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState('hero');
+  const [isNavCollapsed, setIsNavCollapsed] = useState(false);
+  const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set());
   const { language, toggleLanguage } = useLanguage();
   const t = content[language];
+  
+  const sectionRefs = useRef<{ [key: string]: HTMLElement | null }>({});
 
   useEffect(() => {
     const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      setScrollProgress(progress);
+      setIsNavCollapsed(scrollTop > 100);
+      
       const sections = ['hero', 'about', 'experience', 'education', 'skills', 'certifications', 'projects', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-
       for (const section of sections) {
-        const element = document.getElementById(section);
+        const element = sectionRefs.current[section];
         if (element) {
           const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+          if (scrollTop >= offsetTop - 200 && scrollTop < offsetTop + offsetHeight - 200) {
             setActiveSection(section);
             break;
           }
@@ -29,6 +38,25 @@ function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setVisibleElements((prev) => new Set([...prev, entry.target.id]));
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+
+    document.querySelectorAll('[data-reveal]').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -36,25 +64,28 @@ function App() {
     }
   };
 
+  const isVisible = (id: string) => visibleElements.has(id);
+
   return (
-    <div className="bg-black text-white overflow-x-hidden">
+    <div className="bg-bg-primary min-h-screen">
+      {/* Scroll Progress Bar */}
+      <div className="scroll-progress" style={{ width: `${scrollProgress}%` }} />
+
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-lg border-b border-purple-500/20">
-        <div className="max-w-7xl mx-auto px-6 py-4">
+      <nav className={`fixed top-0 left-0 right-0 z-50 bg-bg-primary/95 backdrop-blur-md border-b border-border transition-all duration-300 ${isNavCollapsed ? 'py-3 shadow-sm' : 'py-5'}`}>
+        <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="w-10 h-10 flex items-center justify-center">
-                <img
-                  src="/favicon.ico"
-                  alt="Logo"
-                  className="w-10 h-10 rounded-lg object-cover"
-                />
+            <div className="flex items-center space-x-3 group cursor-pointer" onClick={() => scrollToSection('hero')}>
+              <div className="relative">
+                <img src="/favicon.ico" alt="Logo" className="w-9 h-9 transition-transform duration-300 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-accent/30 rounded-full blur-md opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
-              <div className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              <span className="font-serif text-xl font-bold text-text-primary tracking-tight group-hover:text-accent transition-colors">
                 Ali Emre Çaylak
-              </div>
+              </span>
             </div>
-            <div className="hidden md:flex space-x-8">
+            
+            <div className="hidden md:flex items-center space-x-8">
               {[
                 { id: 'hero', label: t.navigation.home },
                 { id: 'about', label: t.navigation.about },
@@ -67,164 +98,175 @@ function App() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`text-sm transition-all duration-300 hover:text-purple-400 ${activeSection === item.id ? 'text-purple-400 border-b-2 border-purple-400' : 'text-gray-300'
-                    }`}
+                  className={`nav-link text-sm font-medium transition-colors ${activeSection === item.id ? 'text-text-primary' : 'text-text-tertiary hover:text-text-primary'}`}
                 >
                   {item.label}
                 </button>
               ))}
             </div>
+
             <div className="flex items-center space-x-4">
               <button
                 onClick={toggleLanguage}
-                className="flex items-center space-x-2 px-3 py-2 bg-purple-600/20 hover:bg-purple-600/30 rounded-lg transition-all duration-300 border border-purple-500/30 hover:border-purple-400"
+                className="group flex items-center space-x-1 px-4 py-2 border border-border rounded-lg hover:border-accent hover:bg-accent/5 transition-all duration-300"
               >
-                <Globe className="w-4 h-4" />
-                <span className="text-sm font-medium">{language.toUpperCase()}</span>
+                <Globe className="w-4 h-4 text-text-tertiary group-hover:text-accent transition-colors" />
+                <span className="text-sm font-mono text-text-tertiary group-hover:text-accent transition-colors">{language.toUpperCase()}</span>
               </button>
-              <a href="https://www.linkedin.com/in/aliemrecaylak" target="_blank" rel="noopener noreferrer"
-                className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a href="mailto:hello@aliemre.xyz"
-                className="p-2 text-gray-400 hover:text-purple-400 transition-colors duration-300">
-                <Mail className="w-5 h-5" />
-              </a>
             </div>
           </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20"></div>
-        <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-500"></div>
-        </div>
+      <section 
+        id="hero" 
+        ref={(el) => { sectionRefs.current['hero'] = el; }}
+        className="min-h-screen flex items-center py-32 relative overflow-hidden"
+      >
+        <div className="absolute top-20 right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-20 w-72 h-72 bg-accent-light/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+        
+        <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className={`space-y-8 ${isVisible('hero-title') ? 'reveal visible' : 'reveal'}`} id="hero-title" data-reveal>
+              <div>
+                <div className="flex items-center space-x-2 mb-4">
+                  <div className="w-2 h-2 bg-accent rounded-full animate-pulse"></div>
+                  <p className="text-sm font-mono text-accent tracking-wide font-medium">
+                    {t.hero.subtitle}
+                  </p>
+                </div>
+                <h1 className="font-serif text-5xl lg:text-7xl font-bold text-text-primary leading-tight">
+                  <span className="block relative">
+                    Ali Emre
+                    <div className="absolute -bottom-2 left-0 w-20 h-1 bg-gradient-to-r from-accent to-accent-light rounded-full"></div>
+                  </span>
+                  <span className="block text-text-secondary mt-2">Çaylak</span>
+                </h1>
+              </div>
+              
+              <p className="text-lg text-text-secondary leading-relaxed max-w-lg">
+                {t.hero.description}
+              </p>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-fade-in-up">
-            <div className="space-y-4">
-              <h1 className="text-6xl md:text-7xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-purple-600 bg-clip-text text-transparent">
-                  Ali Emre
-                </span>
-                <br />
-                <span className="text-white">Çaylak</span>
-              </h1>
-              <div className="flex items-center space-x-4">
-                <div className="h-1 w-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"></div>
-                <p className="text-xl text-gray-300">{t.hero.subtitle}</p>
+              <div className="flex flex-wrap gap-4 pt-4">
+                <button
+                  onClick={() => scrollToSection('about')}
+                  className="group btn-primary inline-flex items-center px-8 py-4 bg-text-primary text-bg-primary rounded-lg font-semibold hover:bg-accent transition-all duration-300 shadow-lg hover:shadow-xl hover:shadow-text-primary/20"
+                >
+                  {t.hero.exploreButton}
+                  <ArrowUpRight className="w-5 h-5 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </button>
+                <a
+                  href="mailto:hello@aliemre.xyz"
+                  className="inline-flex items-center px-8 py-4 border-2 border-text-primary rounded-lg font-semibold hover:bg-text-primary hover:text-bg-primary transition-all duration-300"
+                >
+                  {t.hero.contactButton}
+                </a>
               </div>
             </div>
 
-            <p className="text-lg text-gray-400 leading-relaxed max-w-lg">
-              {t.hero.description}
-            </p>
-
-            <div className="flex space-x-6">
-              <button
-                onClick={() => scrollToSection('about')}
-                className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-purple-500/25"
-              >
-                {t.hero.exploreButton}
-              </button>
-              <a
-                href="mailto:hello@aliemre.xyz"
-                className="px-8 py-4 border-2 border-purple-500 rounded-full text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition-all duration-300 transform hover:scale-105"
-              >
-                {t.hero.contactButton}
-              </a>
-            </div>
-          </div>
-
-          <div className="relative animate-fade-in-right">
-            <div className="relative w-104 h-104 mx-auto">
-              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full blur-xl opacity-30 animate-pulse"></div>
-              <div className="relative w-full h-full bg-gradient-to-br from-gray-800 to-gray-900 rounded-full border-4 border-purple-500/30 flex items-center justify-center overflow-hidden">
+            <div className={`relative ${isVisible('hero-image') ? 'reveal-right visible' : 'reveal-right'}`} id="hero-image" data-reveal>
+              <div className="relative aspect-square max-w-md mx-auto">
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-accent-light/10 rounded-3xl transform rotate-6"></div>
+                <div className="absolute inset-4 bg-bg-secondary rounded-2xl transform -rotate-3"></div>
                 <img
                   src="/profil.png"
                   alt={t.hero.imageAlt}
-                  className="w-full h-full object-cover rounded-full"
+                  className="relative w-full h-full object-cover rounded-2xl shadow-2xl image-rotate"
                 />
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-accent/20 rounded-2xl backdrop-blur-sm flex items-center justify-center animate-float">
+                  <Cpu className="w-8 h-8 text-accent" />
+                </div>
               </div>
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-purple-500 rounded-full animate-bounce"></div>
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-pink-500 rounded-full animate-bounce delay-300"></div>
             </div>
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <button onClick={() => scrollToSection('about')} className="text-purple-400 hover:text-purple-300 transition-colors">
-            <ChevronDown className="w-8 h-8" />
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+          <button 
+            onClick={() => scrollToSection('about')} 
+            className="flex flex-col items-center text-text-tertiary hover:text-accent transition-colors"
+          >
+            <span className="text-xs font-mono mb-2 tracking-widest">SCROLL</span>
+            <ChevronDown className="w-5 h-5 animate-bounce" />
           </button>
         </div>
       </section>
 
       {/* About Section */}
-      <section id="about" className="min-h-screen flex items-center py-20">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {t.about.title}
-              </span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+      <section 
+        id="about" 
+        ref={(el) => { sectionRefs.current['about'] = el; }}
+        className="py-32 bg-bg-secondary relative overflow-hidden"
+      >
+        <div className="absolute top-0 left-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl -translate-x-1/2"></div>
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className={`mb-16 ${isVisible('about-title') ? 'reveal visible' : 'reveal'}`} id="about-title" data-reveal>
+            <div className="flex items-center space-x-3 mb-4">
+              <span className="text-sm font-mono text-accent font-medium">01</span>
+              <div className="w-8 h-px bg-accent"></div>
+              <span className="text-sm font-mono text-text-tertiary">{t.navigation.about}</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-text-primary">{t.about.title}</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="space-y-6 animate-fade-in-left">
+          <div className="grid lg:grid-cols-2 gap-16">
+            <div className={`space-y-6 ${isVisible('about-text') ? 'reveal-left visible' : 'reveal-left'}`} id="about-text" data-reveal>
               {t.about.paragraphs.map((paragraph, index) => (
-                <div key={index} className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105">
-                  <p className="text-gray-300 leading-relaxed text-lg">
-                    {paragraph}
-                  </p>
-                </div>
+                <p key={index} className="text-text-secondary leading-relaxed text-lg">
+                  {paragraph}
+                </p>
               ))}
             </div>
 
-            <div className="space-y-6 animate-fade-in-right">
-              <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-2xl border border-purple-500/30">
-                <h3 className="text-2xl font-bold text-purple-300 mb-4 flex items-center">
-                  <MapPin className="w-6 h-6 mr-3" />
-                  {t.about.location}
-                </h3>
-                <p className="text-gray-300">Ankara, Türkiye</p>
+            <div className={`space-y-6 ${isVisible('about-info') ? 'reveal-right visible' : 'reveal-right'}`} id="about-info" data-reveal>
+              <div className="card p-6 border border-border rounded-2xl bg-bg-primary">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
+                    <MapPin className="w-5 h-5 text-accent" />
+                  </div>
+                  <span className="text-sm font-medium text-text-secondary">{t.about.location}</span>
+                </div>
+                <p className="text-text-primary font-semibold text-lg">Ankara, Türkiye</p>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-2xl border border-purple-500/30">
-                <h3 className="text-2xl font-bold text-purple-300 mb-4 flex items-center">
-                  <Star className="w-6 h-6 mr-3" />
-                  {t.about.interests.title}
-                </h3>
+              <div className="card p-6 border border-border rounded-2xl bg-bg-primary">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
+                    <Sparkles className="w-5 h-5 text-accent" />
+                  </div>
+                  <span className="text-sm font-medium text-text-secondary">{t.about.interests.title}</span>
+                </div>
                 <div className="space-y-2">
                   {t.about.interests.items.map((interest, index) => (
-                    <div key={index} className="flex items-center text-gray-300">
-                      <Zap className="w-4 h-4 mr-2 text-yellow-400" />
-                      <span>{interest}</span>
+                    <div key={index} className="flex items-center group">
+                      <div className="w-1.5 h-1.5 bg-accent rounded-full mr-3 group-hover:scale-150 transition-transform"></div>
+                      <span className="text-text-primary text-sm">{interest}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 p-6 rounded-2xl border border-purple-500/30">
-                <h3 className="text-2xl font-bold text-purple-300 mb-4">{t.about.languages.title}</h3>
+              <div className="card p-6 border border-border rounded-2xl bg-bg-primary">
+                <div className="flex items-center space-x-3 mb-4">
+                  <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center">
+                    <Globe className="w-5 h-5 text-accent" />
+                  </div>
+                  <span className="text-sm font-medium text-text-secondary">{t.about.languages.title}</span>
+                </div>
                 <div className="space-y-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">{t.about.languages.turkish}</span>
-                    <span className="text-sm text-purple-400 bg-purple-500/20 px-3 py-1 rounded-full">{t.about.languages.native}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">{t.about.languages.english}</span>
-                    <span className="text-sm text-purple-400 bg-purple-500/20 px-3 py-1 rounded-full">{t.about.languages.advanced}</span>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-gray-300">{t.about.languages.german}</span>
-                    <span className="text-sm text-purple-400 bg-purple-500/20 px-3 py-1 rounded-full">{t.about.languages.beginner}</span>
-                  </div>
+                  {[
+                    { name: t.about.languages.turkish, level: t.about.languages.native },
+                    { name: t.about.languages.english, level: t.about.languages.advanced },
+                    { name: t.about.languages.german, level: t.about.languages.beginner }
+                  ].map((lang, index) => (
+                    <div key={index} className="flex justify-between items-center">
+                      <span className="text-text-primary text-sm font-medium">{lang.name}</span>
+                      <span className="text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-full">{lang.level}</span>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -233,54 +275,64 @@ function App() {
       </section>
 
       {/* Experience Section */}
-      <section id="experience" className="min-h-screen flex items-center py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 to-pink-900/10"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-5xl font-bold mb-6 flex items-center justify-center">
-              <Briefcase className="w-12 h-12 mr-4 text-purple-400" />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {t.experience.title}
-              </span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+      <section 
+        id="experience" 
+        ref={(el) => { sectionRefs.current['experience'] = el; }}
+        className="py-32 relative"
+      >
+        <div className="max-w-6xl mx-auto px-6">
+          <div className={`mb-16 ${isVisible('experience-title') ? 'reveal visible' : 'reveal'}`} id="experience-title" data-reveal>
+            <div className="flex items-center space-x-3 mb-4">
+              <span className="text-sm font-mono text-accent font-medium">02</span>
+              <div className="w-8 h-px bg-accent"></div>
+              <span className="text-sm font-mono text-text-tertiary">{t.navigation.experience}</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-text-primary">{t.experience.title}</h2>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {t.experience.positions.map((exp, index) => (
-              <div key={index} className="group animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
-                <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-white mb-2">{exp.title}</h3>
-                      <p className="text-xl font-semibold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent mb-1">
-                        {exp.company}
-                      </p>
-                      {exp.role && <p className="text-gray-400 mb-2">{exp.role}</p>}
-                      {exp.duration && (
-                        <span className="inline-block px-3 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-semibold rounded-full mb-2">
-                          {exp.duration}
-                        </span>
-                      )}
-                    </div>
-                    <div className="text-right text-sm text-gray-400">
-                      <div className="flex items-center mb-1">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {exp.period}
+              <div 
+                key={index} 
+                className={`group card p-8 border border-border rounded-2xl bg-bg-primary ${isVisible(`exp-${index}`) ? 'reveal visible' : 'reveal'}`} 
+                id={`exp-${index}`}
+                data-reveal
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
+                        <Briefcase className="w-4 h-4 text-accent" />
                       </div>
-                      <div className="flex items-center">
-                        <MapPin className="w-4 h-4 mr-1" />
-                        {exp.location}
-                      </div>
+                      <h3 className="text-xl font-bold text-text-primary">{exp.title}</h3>
                     </div>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {exp.skills.map((skill, skillIndex) => (
-                      <span key={skillIndex} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30 hover:bg-purple-500/30 transition-colors duration-300">
-                        {skill}
+                    <p className="text-accent font-semibold text-lg mb-1">{exp.company}</p>
+                    {exp.role && <p className="text-text-secondary text-sm mb-3">{exp.role}</p>}
+                    {exp.duration && (
+                      <span className="inline-flex items-center text-xs font-mono bg-accent/10 text-accent px-3 py-1.5 rounded-full">
+                        <Zap className="w-3 h-3 mr-1" />
+                        {exp.duration}
                       </span>
-                    ))}
+                    )}
                   </div>
+                  <div className="text-right text-sm text-text-tertiary">
+                    <div className="flex items-center justify-end space-x-2 mb-1">
+                      <Calendar className="w-4 h-4" />
+                      <span>{exp.period}</span>
+                    </div>
+                    <div className="flex items-center justify-end space-x-2">
+                      <MapPin className="w-4 h-4" />
+                      <span>{exp.location}</span>
+                    </div>
+                  </div>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border">
+                  {exp.skills.map((skill, skillIndex) => (
+                    <span key={skillIndex} className="tag text-xs font-mono text-text-secondary bg-bg-secondary px-3 py-1.5 rounded-lg">
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -289,59 +341,69 @@ function App() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="min-h-screen flex items-center py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-l from-purple-900/10 to-pink-900/10"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-5xl font-bold mb-6 flex items-center justify-center">
-              <GraduationCap className="w-12 h-12 mr-4 text-purple-400" />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {t.education.title}
-              </span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+      <section 
+        id="education" 
+        ref={(el) => { sectionRefs.current['education'] = el; }}
+        className="py-32 bg-bg-secondary relative"
+      >
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl"></div>
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className={`mb-16 ${isVisible('education-title') ? 'reveal visible' : 'reveal'}`} id="education-title" data-reveal>
+            <div className="flex items-center space-x-3 mb-4">
+              <span className="text-sm font-mono text-accent font-medium">03</span>
+              <div className="w-8 h-px bg-accent"></div>
+              <span className="text-sm font-mono text-text-tertiary">{t.navigation.education}</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-text-primary">{t.education.title}</h2>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-6">
             {t.education.degrees.map((edu, index) => (
-              <div key={index} className="group animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
-                <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <h3 className="text-2xl font-bold text-white mb-2">{edu.degree}</h3>
-                      <p className="text-xl font-semibold bg-gradient-to-r from-purple-500 to-pink-500 bg-clip-text text-transparent mb-2">
-                        {edu.school}
-                      </p>
-                      <div className="flex flex-wrap gap-2 mb-2">
-                        {edu.note && (
-                          <span className="inline-block px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-black text-sm font-semibold rounded-full">
-                            {edu.note}
-                          </span>
-                        )}
-                        {edu.gpa && (
-                          <span className="inline-block px-3 py-1 bg-gradient-to-r from-green-500 to-emerald-500 text-white text-sm font-semibold rounded-full">
-                            GPA: {edu.gpa}
-                          </span>
-                        )}
+              <div 
+                key={index} 
+                className={`group card p-8 border border-border rounded-2xl bg-bg-primary ${isVisible(`edu-${index}`) ? 'reveal visible' : 'reveal'}`} 
+                id={`edu-${index}`}
+                data-reveal
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-3 mb-2">
+                      <div className="w-8 h-8 bg-accent/10 rounded-lg flex items-center justify-center">
+                        <GraduationCap className="w-4 h-4 text-accent" />
                       </div>
+                      <h3 className="text-xl font-bold text-text-primary">{edu.degree}</h3>
                     </div>
-                    <div className="text-right text-sm text-gray-400">
-                      <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-1" />
-                        {edu.period}
-                      </div>
+                    <p className="text-accent font-semibold">{edu.school}</p>
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      {edu.note && (
+                        <span className="text-xs font-mono bg-text-primary text-bg-primary px-3 py-1 rounded-full">
+                          {edu.note}
+                        </span>
+                      )}
+                      {edu.gpa && (
+                        <span className="text-xs font-mono bg-accent/10 text-accent px-3 py-1 rounded-full border border-accent/20">
+                          GPA: {edu.gpa}
+                        </span>
+                      )}
                     </div>
                   </div>
-                  {edu.skills && (
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {edu.skills.map((skill, skillIndex) => (
-                        <span key={skillIndex} className="px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full text-sm border border-purple-500/30 hover:bg-purple-500/30 transition-colors duration-300">
-                          {skill}
-                        </span>
-                      ))}
+                  <div className="text-right text-sm text-text-tertiary">
+                    <div className="flex items-center justify-end space-x-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>{edu.period}</span>
                     </div>
-                  )}
+                  </div>
                 </div>
+                {edu.skills && (
+                  <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border">
+                    {edu.skills.map((skill, skillIndex) => (
+                      <span key={skillIndex} className="tag text-xs font-mono text-text-secondary bg-bg-secondary px-3 py-1.5 rounded-lg">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -349,74 +411,78 @@ function App() {
       </section>
 
       {/* Skills Section */}
-      <section id="skills" className="min-h-screen flex items-center py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/10 to-pink-900/10"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-5xl font-bold mb-6 flex items-center justify-center">
-              <Code className="w-12 h-12 mr-4 text-purple-400" />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {t.skills.title}
-              </span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+      <section 
+        id="skills" 
+        ref={(el) => { sectionRefs.current['skills'] = el; }}
+        className="py-32 relative"
+      >
+        <div className="max-w-6xl mx-auto px-6">
+          <div className={`mb-16 ${isVisible('skills-title') ? 'reveal visible' : 'reveal'}`} id="skills-title" data-reveal>
+            <div className="flex items-center space-x-3 mb-4">
+              <span className="text-sm font-mono text-accent font-medium">04</span>
+              <div className="w-8 h-px bg-accent"></div>
+              <span className="text-sm font-mono text-text-tertiary">{t.navigation.skills}</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-text-primary">{t.skills.title}</h2>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="animate-fade-in-left">
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105 h-full">
-                <h3 className="text-2xl font-bold text-purple-300 mb-6 flex items-center">
-                  <Code className="w-6 h-6 mr-3" />
-                  {t.skills.programming.title}
-                </h3>
-                <div className="space-y-4">
-                  {t.skills.programming.languages.map((lang, index) => (
-                    <div key={lang.name} className="flex items-center justify-between group">
-                      <span className="text-gray-300">{lang.name}</span>
-                      <div className="flex space-x-1">
-                        {[...Array(5)].map((_, i) => (
-                          <div key={i} className={`w-2 h-2 rounded-full transition-all duration-300 ${i < lang.level
-                            ? 'bg-purple-500'
-                            : 'bg-gray-600'
-                            } group-hover:scale-125`}></div>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+          <div className="grid md:grid-cols-3 gap-6">
+            <div className={`card p-8 border border-border rounded-2xl bg-bg-primary ${isVisible('skills-prog') ? 'reveal-left visible' : 'reveal-left'}`} id="skills-prog" data-reveal>
+              <h3 className="text-lg font-bold text-text-primary mb-6 flex items-center">
+                <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mr-3">
+                  <Code className="w-5 h-5 text-accent" />
                 </div>
+                {t.skills.programming.title}
+              </h3>
+              <div className="space-y-4">
+                {t.skills.programming.languages.map((lang) => (
+                  <div key={lang.name} className="flex items-center justify-between group">
+                    <span className="text-text-secondary text-sm group-hover:text-text-primary transition-colors font-medium">{lang.name}</span>
+                    <div className="flex space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <div
+                          key={i}
+                          className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                            i < lang.level ? 'bg-accent' : 'bg-bg-tertiary'
+                          }`}
+                        ></div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <div className="animate-fade-in-up">
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105 h-full">
-                <h3 className="text-2xl font-bold text-purple-300 mb-6 flex items-center">
-                  <Target className="w-6 h-6 mr-3" />
-                  {t.skills.technologies.title}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {t.skills.technologies.items.map((tech) => (
-                    <span key={tech} className="px-4 py-2 bg-gradient-to-r from-purple-600/20 to-pink-600/20 text-purple-300 rounded-lg border border-purple-500/30 hover:border-purple-400 hover:bg-purple-500/30 transition-all duration-300 transform hover:scale-105">
-                      {tech}
-                    </span>
-                  ))}
+            <div className={`card p-8 border border-border rounded-2xl bg-bg-primary ${isVisible('skills-tech') ? 'reveal visible' : 'reveal'}`} id="skills-tech" data-reveal>
+              <h3 className="text-lg font-bold text-text-primary mb-6 flex items-center">
+                <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mr-3">
+                  <Zap className="w-5 h-5 text-accent" />
                 </div>
+                {t.skills.technologies.title}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {t.skills.technologies.items.map((tech) => (
+                  <span key={tech} className="tag text-xs font-mono text-text-secondary bg-bg-secondary px-3 py-2 rounded-lg">
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
 
-            <div className="animate-fade-in-right">
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105 h-full">
-                <h3 className="text-2xl font-bold text-purple-300 mb-6 flex items-center">
-                  <Rocket className="w-6 h-6 mr-3" />
-                  {t.skills.expertise.title}
-                </h3>
-                <div className="space-y-3">
-                  {t.skills.expertise.items.map((skill) => (
-                    <div key={skill} className="flex items-center group">
-                      <div className="w-2 h-2 bg-purple-500 rounded-full mr-3 group-hover:scale-150 transition-transform duration-300"></div>
-                      <span className="text-gray-300 group-hover:text-purple-300 transition-colors duration-300">{skill}</span>
-                    </div>
-                  ))}
+            <div className={`card p-8 border border-border rounded-2xl bg-bg-primary ${isVisible('skills-exp') ? 'reveal-right visible' : 'reveal-right'}`} id="skills-exp" data-reveal>
+              <h3 className="text-lg font-bold text-text-primary mb-6 flex items-center">
+                <div className="w-10 h-10 bg-accent/10 rounded-xl flex items-center justify-center mr-3">
+                  <Award className="w-5 h-5 text-accent" />
                 </div>
+                {t.skills.expertise.title}
+              </h3>
+              <div className="space-y-3">
+                {t.skills.expertise.items.map((skill) => (
+                  <div key={skill} className="flex items-center group">
+                    <div className="w-2 h-2 bg-accent rounded-full mr-3 group-hover:scale-150 transition-transform"></div>
+                    <span className="text-text-secondary text-sm group-hover:text-text-primary transition-colors">{skill}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -424,44 +490,48 @@ function App() {
       </section>
 
       {/* Certifications Section */}
-      <section id="certifications" className="min-h-screen flex items-center py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-pink-900/10 to-purple-900/10"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-5xl font-bold mb-6 flex items-center justify-center">
-              <Award className="w-12 h-12 mr-4 text-purple-400" />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {t.certifications.title}
-              </span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+      <section 
+        id="certifications" 
+        ref={(el) => { sectionRefs.current['certifications'] = el; }}
+        className="py-32 bg-bg-secondary relative"
+      >
+        <div className="absolute top-20 left-20 w-72 h-72 bg-accent/5 rounded-full blur-3xl"></div>
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className={`mb-16 ${isVisible('cert-title') ? 'reveal visible' : 'reveal'}`} id="cert-title" data-reveal>
+            <div className="flex items-center space-x-3 mb-4">
+              <span className="text-sm font-mono text-accent font-medium">05</span>
+              <div className="w-8 h-px bg-accent"></div>
+              <span className="text-sm font-mono text-text-tertiary">{t.navigation.skills}</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-text-primary">{t.certifications.title}</h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.certifications.items.map((cert, index) => (
-              <div key={index} className={`group animate-fade-in-up ${cert.featured ? 'md:col-span-2 lg:col-span-1' : ''}`} style={{ animationDelay: `${index * 100}ms` }}>
-                <div className={`bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-full ${cert.featured
-                  ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20'
-                  : 'border-purple-500/20 hover:border-purple-500/40 hover:shadow-purple-500/20'
-                  }`}>
-                  {cert.featured && (
-                    <div className="flex items-center mb-3">
-                      <Star className="w-5 h-5 text-yellow-400 mr-2" />
-                      <span className="text-yellow-400 text-sm font-semibold">{t.certifications.featured}</span>
-                    </div>
-                  )}
-                  <h3 className="text-lg font-bold text-white mb-2 group-hover:text-purple-300 transition-colors duration-300">
-                    {cert.title}
-                  </h3>
-                  <p className="text-purple-400 font-medium mb-2">{cert.issuer}</p>
-                  <p className="text-gray-400 text-sm mb-4">{cert.date}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {cert.skills.map((skill) => (
-                      <span key={skill} className="px-2 py-1 bg-purple-500/20 text-purple-300 rounded text-xs border border-purple-500/30">
-                        {skill}
-                      </span>
-                    ))}
+              <div 
+                key={index} 
+                className={`card p-6 border rounded-2xl bg-bg-primary ${cert.featured ? 'border-accent shadow-lg' : 'border-border'} ${isVisible(`cert-${index}`) ? 'reveal-scale visible' : 'reveal-scale'}`}
+                id={`cert-${index}`}
+                data-reveal
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {cert.featured && (
+                  <div className="flex items-center mb-3">
+                    <span className="text-xs font-mono bg-accent text-bg-primary px-2 py-1 rounded-full flex items-center">
+                      <Sparkles className="w-3 h-3 mr-1" />
+                      {t.certifications.featured}
+                    </span>
                   </div>
+                )}
+                <h3 className="text-base font-bold text-text-primary mb-2">{cert.title}</h3>
+                <p className="text-accent text-sm font-semibold mb-1">{cert.issuer}</p>
+                <p className="text-text-tertiary text-xs mb-4">{cert.date}</p>
+                <div className="flex flex-wrap gap-1.5">
+                  {cert.skills.map((skill) => (
+                    <span key={skill} className="text-xs font-mono text-text-secondary bg-bg-secondary px-2 py-1 rounded">
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -470,45 +540,46 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="min-h-screen flex items-center py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/10 to-pink-900/10"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-5xl font-bold mb-6 flex items-center justify-center">
-              <Building className="w-12 h-12 mr-4 text-purple-400" />
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {t.projects.title}
-              </span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full"></div>
+      <section 
+        id="projects" 
+        ref={(el) => { sectionRefs.current['projects'] = el; }}
+        className="py-32 relative"
+      >
+        <div className="max-w-6xl mx-auto px-6">
+          <div className={`mb-16 ${isVisible('projects-title') ? 'reveal visible' : 'reveal'}`} id="projects-title" data-reveal>
+            <div className="flex items-center space-x-3 mb-4">
+              <span className="text-sm font-mono text-accent font-medium">06</span>
+              <div className="w-8 h-px bg-accent"></div>
+              <span className="text-sm font-mono text-text-tertiary">{t.navigation.projects}</span>
+            </div>
+            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-text-primary">{t.projects.title}</h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             {t.projects.items.map((project, index) => (
-              <div key={index} className="group animate-fade-in-up" style={{ animationDelay: `${index * 200}ms` }}>
-                <div className={`bg-gradient-to-br from-gray-900 to-gray-800 p-8 rounded-2xl border transition-all duration-500 transform hover:scale-105 hover:shadow-2xl h-full ${project.featured
-                  ? 'border-yellow-500/40 hover:border-yellow-400 hover:shadow-yellow-500/20'
-                  : 'border-purple-500/20 hover:border-purple-500/40 hover:shadow-purple-500/20'
-                  }`}>
-                  {project.featured && (
-                    <div className="flex items-center mb-4">
-                      <Star className="w-5 h-5 text-yellow-400 mr-2" />
-                      <span className="text-yellow-400 text-sm font-semibold">{project.badgeText || t.projects.patentApplication}</span>
-                    </div>
-                  )}
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-purple-300 transition-colors duration-300">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-300 mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.skills.map((skill) => (
-                      <span key={skill} className="px-3 py-2 bg-gradient-to-r from-purple-500/20 to-pink-500/20 text-white rounded-lg border border-purple-500/30 hover:border-purple-400 transition-all duration-300 transform hover:scale-105">
-                        {skill}
-                      </span>
-                    ))}
+              <div 
+                key={index} 
+                className={`card p-8 border rounded-2xl bg-bg-primary ${project.featured ? 'border-accent shadow-lg' : 'border-border'} ${isVisible(`project-${index}`) ? 'reveal visible' : 'reveal'}`}
+                id={`project-${index}`}
+                data-reveal
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                {project.featured && project.badgeText && (
+                  <div className="flex items-center mb-4">
+                    <span className="text-xs font-mono bg-accent text-bg-primary px-3 py-1 rounded-full flex items-center">
+                      <Award className="w-3 h-3 mr-1" />
+                      {project.badgeText}
+                    </span>
                   </div>
+                )}
+                <h3 className="text-xl font-bold text-text-primary mb-3">{project.title}</h3>
+                <p className="text-text-secondary text-sm leading-relaxed mb-6">{project.description}</p>
+                <div className="flex flex-wrap gap-2">
+                  {project.skills.map((skill) => (
+                    <span key={skill} className="tag text-xs font-mono text-text-secondary bg-bg-secondary px-3 py-2 rounded-lg">
+                      {skill}
+                    </span>
+                  ))}
                 </div>
               </div>
             ))}
@@ -517,64 +588,84 @@ function App() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="min-h-screen flex items-center py-20 relative">
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-pink-900/20"></div>
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center animate-fade-in-up">
-            <h2 className="text-5xl font-bold mb-6">
-              <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                {t.contact.title}
-              </span>
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto rounded-full mb-12"></div>
-
-            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-              {t.contact.description}
-            </p>
-
-            <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-16">
-              <a href="https://www.linkedin.com/in/aliemrecaylak" target="_blank" rel="noopener noreferrer"
-                className="group inline-flex items-center px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 transform hover:scale-110 shadow-lg hover:shadow-purple-500/25">
-                <Linkedin className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
-                {t.contact.linkedinProfile}
-              </a>
-              <a href="mailto:hello@aliemre.xyz"
-                className="group inline-flex items-center px-8 py-4 border-2 border-purple-500 rounded-full text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition-all duration-300 transform hover:scale-110">
-                <Mail className="w-6 h-6 mr-3 group-hover:rotate-12 transition-transform duration-300" />
-                {t.contact.sendEmail}
-              </a>
+      <section 
+        id="contact" 
+        ref={(el) => { sectionRefs.current['contact'] = el; }}
+        className="py-32 bg-bg-secondary relative overflow-hidden"
+      >
+        <div className="absolute top-0 left-1/2 w-96 h-96 bg-accent/5 rounded-full blur-3xl -translate-x-1/2"></div>
+        <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <div className={`mb-16 text-center ${isVisible('contact-title') ? 'reveal visible' : 'reveal'}`} id="contact-title" data-reveal>
+            <div className="flex items-center justify-center space-x-3 mb-4">
+              <span className="text-sm font-mono text-accent font-medium">07</span>
+              <div className="w-8 h-px bg-accent"></div>
+              <span className="text-sm font-mono text-text-tertiary">{t.navigation.contact}</span>
             </div>
+            <h2 className="font-serif text-4xl lg:text-5xl font-bold text-text-primary mb-4">{t.contact.title}</h2>
+            <p className="text-text-secondary max-w-2xl mx-auto text-lg">{t.contact.description}</p>
+          </div>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105">
-                <Mail className="w-8 h-8 text-purple-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">{t.contact.email}</h3>
-                <p className="text-gray-400">hello@aliemre.xyz</p>
-                <p className="text-gray-500 text-sm mt-1">aliemrecaylak@gmail.com</p>
+          <div className={`flex flex-col sm:flex-row justify-center items-center gap-4 mb-16 ${isVisible('contact-buttons') ? 'reveal visible' : 'reveal'}`} id="contact-buttons" data-reveal>
+            <a
+              href="https://www.linkedin.com/in/aliemrecaylak"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group btn-primary inline-flex items-center px-8 py-4 bg-text-primary text-bg-primary rounded-xl font-semibold hover:bg-accent transition-all duration-300 shadow-lg hover:shadow-xl"
+            >
+              <Linkedin className="w-5 h-5 mr-3" />
+              {t.contact.linkedinProfile}
+              <ExternalLink className="w-4 h-4 ml-3 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </a>
+            <a
+              href="mailto:hello@aliemre.xyz"
+              className="group inline-flex items-center px-8 py-4 border-2 border-text-primary rounded-xl font-semibold hover:bg-text-primary hover:text-bg-primary transition-all duration-300"
+            >
+              <Mail className="w-5 h-5 mr-3" />
+              {t.contact.sendEmail}
+            </a>
+          </div>
+
+          <div className={`grid md:grid-cols-3 gap-6 max-w-4xl mx-auto ${isVisible('contact-info') ? 'reveal visible' : 'reveal'}`} id="contact-info" data-reveal>
+            <div className="card p-6 border border-border rounded-2xl bg-bg-primary text-center">
+              <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <Mail className="w-6 h-6 text-accent" />
               </div>
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105">
-                <MapPin className="w-8 h-8 text-purple-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">{t.contact.location}</h3>
-                <p className="text-gray-400">Ankara, Türkiye</p>
+              <h3 className="text-sm font-bold text-text-primary mb-1">{t.contact.email}</h3>
+              <p className="text-text-secondary text-sm">hello@aliemre.xyz</p>
+              <p className="text-text-tertiary text-xs mt-1">aliemrecaylak@gmail.com</p>
+            </div>
+            <div className="card p-6 border border-border rounded-2xl bg-bg-primary text-center">
+              <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <MapPin className="w-6 h-6 text-accent" />
               </div>
-              <div className="bg-gradient-to-br from-gray-900 to-gray-800 p-6 rounded-2xl border border-purple-500/20 hover:border-purple-500/40 transition-all duration-500 transform hover:scale-105">
-                <Linkedin className="w-8 h-8 text-purple-400 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold text-white mb-2">{t.contact.linkedin}</h3>
-                <p className="text-gray-400">aliemrecaylak</p>
+              <h3 className="text-sm font-bold text-text-primary mb-1">{t.contact.location}</h3>
+              <p className="text-text-secondary text-sm">Ankara, Türkiye</p>
+            </div>
+            <div className="card p-6 border border-border rounded-2xl bg-bg-primary text-center">
+              <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center mx-auto mb-3">
+                <Linkedin className="w-6 h-6 text-accent" />
               </div>
+              <h3 className="text-sm font-bold text-text-primary mb-1">{t.contact.linkedin}</h3>
+              <p className="text-text-secondary text-sm">aliemrecaylak</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 border-t border-purple-500/20 py-8">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-gray-400">
-            {t.footer.copyright}
-          </p>
+      <footer className="py-8 border-t border-border">
+        <div className="max-w-6xl mx-auto px-6 text-center">
+          <p className="text-text-tertiary text-sm">{t.footer.copyright}</p>
         </div>
       </footer>
+
+      {/* Back to Top */}
+      <button
+        onClick={() => scrollToSection('hero')}
+        className={`fixed bottom-8 right-8 p-4 bg-text-primary text-bg-primary rounded-full shadow-lg hover:bg-accent transition-all duration-300 hover:scale-110 ${scrollProgress > 50 ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'}`}
+      >
+        <ChevronDown className="w-5 h-5 rotate-180" />
+      </button>
     </div>
   );
 }
