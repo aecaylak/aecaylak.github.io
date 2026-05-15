@@ -3,6 +3,7 @@ import { Mail, Linkedin, ExternalLink, Calendar, MapPin, Globe, ArrowUpRight, Ch
 import { useLanguage } from './hooks/useLanguage';
 import { content } from './data/content';
 import Admin from './pages/Admin';
+import ProjectLogos from './components/ProjectLogos';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'admin'>('home');
@@ -230,6 +231,9 @@ function App() {
           </button>
         </div>
       </section>
+
+      {/* Project Logos Section */}
+      <ProjectLogos />
 
       {/* About Section */}
       <section 
