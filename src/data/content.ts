@@ -14,7 +14,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     hero: {
       title: 'Ali Emre Çaylak',
       subtitle: 'Yapay Zeka Odaklı Endüstri Mühendisi',
-      description: 'TOBB ETÜ Tam Burslu Endüstri Mühendisliği Lisans ve Yapay Zeka Mühendisliği Yan Dal Mezunudur. Optimizasyon, Simulasyon ve Makine Öğrenmesi alanlarında uzmanlaşmıştır.',
+      description: 'TOBB ETÜ Tam Burslu Endüstri Mühendisliği Lisans ve Yapay Zeka Mühendisliği Yan Dal Mezunu. Optimizasyon, Simulasyon ve Makine Öğrenmesi alanlarında uzmanlaşmakta.',
       exploreButton: 'Keşfet',
       contactButton: 'İletişim',
       imageAlt: 'Ali Emre Çaylak Profil Fotoğrafı'
@@ -22,9 +22,9 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     about: {
       title: 'Hakkımda',
       paragraphs: [
-        'Ali Emre Çaylak; TOBB ETÜ tam burslu endüstri mühendisliği lisans ve yapay zeka mühendisliği dan dal mezunudur. 2022 Google Oyun ve Uygulama Akademisi bursiyeri, Ankara Pursaklar Fen lisesi mezunudur.',
-        'Endüstri mühendisliği araçlarına, Java ve Python dillerine hakimdir. Beko BMİ\'de, 2025 bahar döneminde TUSAŞ\'ta ve 2025 güz döneminde Roketsan\'da 70 iş günü uzun dönem stajlarını tamamlamıştır. Gerçekleştirdiği ve geliştirmekte olduğu girişimleri ile aktif, problem çözme odaklı ve analitik becerileri gelişmiş birisidir.',
-        'Optimizasyon, agent tabanlı simülasyon ve makine öğrenmesi üzerine çalışmaları devam etmektedir. TUSAŞ\'ta yapmış olduğu kompozit malzeme dizilim hesaplama optimizasyonu projesi patentlenme aşamasındadır. İstanbul Havalimanı yer hizmetleri personellerinin vardiya ataması lisans bitirme projesini başarı ile tamamlamıştır. Facebook tarafından geliştirilen Spark AR Studio programında ilk Türkçe kaynağı üretmiş ve eğitim hazırlamıştır.'
+        'Ali Emre Çaylak; TOBB ETÜ tam burslu endüstri mühendisliği lisans ve yapay zeka mühendisliği yan dal mezunudur. 2022 Google Oyun ve Uygulama Akademisi bursiyeri, Ankara Pursaklar Fen lisesi mezunudur.',
+        'Endüstri mühendisliği ve yapay zeka mühendisliği araçlarına, Java ve Python dillerine hakimdir. Beko BMİ\'de, 2025 bahar döneminde TUSAŞ\'ta ve 2025 güz döneminde Roketsan\'da 70 iş günü uzun dönem stajlarını tamamlamıştır. Gerçekleştirdiği ve geliştirmekte olduğu girişimleri ile aktif, problem çözme odaklı ve analitik becerileri gelişmiş birisidir.',
+        'Optimizasyon, veri analizi, ajan tabanlı simülasyon ve makine öğrenmesi üzerine çalışmaları devam etmektedir. TUSAŞ\'ta yapmış olduğu kompozit malzeme dizilim hesaplama optimizasyonu projesi patentlenme aşamasındadır. İstanbul Havalimanı yolcu tahminleme, güvenlik noktası sayısı ve yer hizmetleri personellerinin vardiya ataması optimizasyonu lisans bitirme projesini başarı ile tamamlamıştır. Facebook tarafından geliştirilen Spark AR Studio programında ilk Türkçe kaynağı üretmiş ve eğitim hazırlamıştır.'
       ],
       location: 'Konum',
       interests: {
@@ -64,7 +64,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
         },
         {
           title: 'Araştırma ve Geliştirme Mühendisliği Stajyeri',
-          company: 'Beko Corporate',
+          company: 'Arçelik BMİ',
           period: 'Mayıs 2024 - Ağustos 2024',
           location: 'Ankara, Türkiye',
           role: 'Proje Yönetimi & Pazarlama',
@@ -81,7 +81,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           school: 'TOBB Ekonomi ve Teknoloji Üniversitesi',
           period: 'Eylül 2021 - Nisan 2026',
           note: 'Tam Burs',
-          gpa: '3.32/4.00',
+          gpa: '3.31/4.00',
           skills: ['Endüstri Mühendisliği', 'Yöneylem Araştırması', 'Kalite Yönetimi', 'Python', 'CPLEX', 'AutoCAD', 'MS Office Programları', 'Yalın Altı Sigma', 'Sistem Simülasyonu', 'Üretim Sistemleri', 'Kalite Kontrol', 'Mühendislik Ekonomisi', 'Üretim Bilgi Sistemleri', 'Proje Yönetimi', 'İş Analizi ve Tasarımı', 'Teknik Resim', 'Hizmet Sistemleri Tasarımı ve Planlaması', 'Tesis Tasarımı ve Planlaması', 'Stokastik Modelleme']
         },
         {
@@ -89,7 +89,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           school: 'TOBB Ekonomi ve Teknoloji Üniversitesi',
           period: 'Eylül 2023 - Nisan 2026',
           note: 'Tam Burs',
-          gpa: '2.38/4.00',
+          gpa: '2.35/4.00',
           skills: ['Makine Öğrenimi', 'Python', 'Veri Bilimi', 'Java', 'Nesne Yönelimli Programlama', 'Veri Yapıları', 'Matlab']
         },
         {
@@ -97,7 +97,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           school: 'Ankara Pursaklar Fen Lisesi',
           period: '2017 - 2021',
           note: '',
-          gpa: '93.5/100 | YKS MF Sıralaması: 7337.',
+          gpa: '93.5/100 | YKS-SAY Sıralaması: 7337.',
           skills: []
         }
       ]
@@ -118,7 +118,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       },
       technologies: {
         title: 'Teknolojiler',
-        items: ['Yapay Zeka Modelleri', 'Agent Tabanlı Simülasyon', 'Çok platformlu uygulama geliştirme', 'Optimizasyon Algoritmaları', 'MS Office Programları', 'Otomasyon Araçları', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Superset', 'PowerBI']
+        items: ['Yapay Zeka Modelleri', 'Ajan Tabanlı Yazılım Geliştirme', 'Ajan Tabanlı Simülasyon', 'Çok platformlu uygulama geliştirme', 'Optimizasyon Algoritmaları', 'MS Office Programları', 'Otomasyon Araçları', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Superset', 'PowerBI']
       },
       expertise: {
         title: 'Uzmanlık',
@@ -240,7 +240,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     hero: {
       title: 'Ali Emre Çaylak',
       subtitle: 'AI-Focused Industrial Engineer',
-      description: 'Industrial Engineering graduate with a minor in AI Engineering from TOBB ETU (Full Scholarship). Specialized in Optimization, Simulation, and Machine Learning.',
+      description: 'Industrial Engineering graduate with a minor in AI Engineering from TOBB ETU (Full Scholarship). Specialiing in Optimization, Simulation, and Machine Learning.',
       exploreButton: 'Explore',
       contactButton: 'Contact',
       imageAlt: 'Ali Emre Çaylak Profile Photo'
@@ -248,9 +248,9 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
     about: {
       title: 'About Me',
       paragraphs: [
-        'Ali Emre Çaylak is a full scholarship Industrial Engineering graduate with a minor in Artificial Intelligence Engineering from TOBB ETU. He is a 2022 Google Game and Application Academy scholar and a graduate of Ankara Pursaklar Science High School.',
-        'He is proficient in industrial engineering tools as well as Java and Python. He completed 70-day long-term internships at Beko BMİ in summer 2024, TUSAŞ in spring 2025, and Roketsan in fall 2025. He is an active, problem-solving, and analytically-minded individual with several ongoing entrepreneurial ventures.',
-        'He continues his work in optimization, agent-based simulation, and machine learning. His project on composite material layout calculation optimization at TUSAŞ is currently in the patent application process. He successfully completed his graduation project on shift assignment for ground handling personnel at Istanbul Airport. He also authored the first Turkish resource and training for Facebook\'s Spark AR Studio.'
+        'Ali Emre Çaylak is a full-scholarship Industrial Engineering graduate and Artificial Intelligence Engineering minor from TOBB ETÜ. He is a 2022 Google Game and Application Academy fellow and a graduate of Ankara Pursaklar Science High School.',
+        'Proficient in industrial engineering and artificial intelligence engineering tools, as well as Java and Python languages. He completed his 70-workday long-term internships at Beko BMI, TAI (TUSAŞ) in the Spring 2025 term, and Roketsan in the Fall 2025 term. He is an active, problem-solving-oriented individual with strong analytical skills, demonstrated through his launched and ongoing ventures.',
+        'He continues his work on optimization, data analysis, agent-based simulation, and machine learning. His composite material layup calculation optimization project conducted at TAI is currently in the patenting phase. He successfully completed his graduation project on Istanbul Airport passenger forecasting, security checkpoint count, and ground services personnel shift assignment optimization. He produced the first Turkish resource and created a training program for Spark AR Studio, developed by Facebook.'
       ],
       location: 'Location',
       interests: {
@@ -307,7 +307,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           school: 'TOBB University of Economics and Technology',
           period: 'September 2021 - April 2026',
           note: 'Full Scholarship',
-          gpa: '3.32/4.00',
+          gpa: '3.31/4.00',
           skills: ['Industrial Engineering', 'Operations Research', 'Quality Management', 'Python', 'CPLEX', 'AutoCAD', 'MS Office', 'Lean Six Sigma', 'System Simulation', 'Production Systems', 'Quality Control', 'Engineering Economics', 'Production Info Systems', 'Project Management', 'Work Analysis & Design', 'Technical Drawing', 'Service Systems Planning', 'Facility Design', 'Stochastic Modeling']
         },
         {
@@ -315,7 +315,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           school: 'TOBB University of Economics and Technology',
           period: 'September 2023 - April 2026',
           note: 'Full Scholarship',
-          gpa: '2.38/4.00',
+          gpa: '2.35/4.00',
           skills: ['Machine Learning', 'Python', 'Data Science', 'Java', 'OOP', 'Data Structures', 'Matlab']
         },
         {
@@ -323,7 +323,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
           school: 'Ankara Pursaklar Science High School',
           period: '2017 - 2021',
           note: '',
-          gpa: '93.5/100 | YKS Ranking: 7337',
+          gpa: '93.5/100 | YKS-SAY Ranking: 7337',
           skills: []
         }
       ]
