@@ -118,7 +118,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       },
       technologies: {
         title: 'Teknolojiler',
-        items: ['Yapay Zeka Modelleri', 'Ajan Tabanlı Yazılım Geliştirme', 'Ajan Tabanlı Simülasyon', 'Çok platformlu uygulama geliştirme', 'Optimizasyon Algoritmaları', 'MS Office Programları', 'Otomasyon Araçları', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Superset', 'PowerBI']
+        items: ['Yapay Zeka Modelleri', 'Ajan Tabanlı Kodlama', 'Ajan Tabanlı Simülasyon', 'Çok platformlu uygulama geliştirme', 'Optimizasyon Algoritmaları', 'MS Office Programları', 'Otomasyon Araçları', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Superset', 'PowerBI']
       },
       expertise: {
         title: 'Uzmanlık',
@@ -344,7 +344,7 @@ export const content: Record<'tr' | 'en', LanguageContent> = {
       },
       technologies: {
         title: 'Technologies',
-        items: ['AI Models', 'Agent-Based Simulation', 'Cross-Platform Development', 'Optimization Algorithms', 'MS Office', 'Automation Tools', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Superset', 'PowerBI']
+        items: ['AI Models','Agent-Based Codding', 'Agent-Based Simulation', 'Cross-Platform Development', 'Optimization Algorithms', 'MS Office', 'Automation Tools', 'Unity', 'Git', 'AutoCAD', 'Arduino', 'Photoshop', 'Superset', 'PowerBI']
       },
       expertise: {
         title: 'Expertise',
