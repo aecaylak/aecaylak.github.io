@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Mail, Linkedin, ExternalLink, Calendar, MapPin, Globe, ArrowUpRight, ChevronDown, Sparkles, Cpu, Zap, Code, Briefcase, GraduationCap, Award, Star, TrendingUp, Rocket, Settings } from 'lucide-react';
+import { Mail, Linkedin, ExternalLink, Calendar, MapPin, Globe, ArrowUpRight, ChevronDown, Sparkles, Cpu, Zap, Code, Briefcase, GraduationCap, Award, Star, TrendingUp, Rocket } from 'lucide-react';
 import { useLanguage } from './hooks/useLanguage';
 import { content } from './data/content';
 import Admin from './pages/Admin';
@@ -115,13 +115,6 @@ function App() {
               >
                 <Globe className="w-4 h-4 text-text-tertiary group-hover:text-accent transition-colors" />
                 <span className="text-sm font-mono font-bold text-text-tertiary group-hover:text-accent transition-colors">{language.toUpperCase()}</span>
-              </button>
-              <button
-                onClick={() => setCurrentPage('admin')}
-                className="group flex items-center space-x-1 px-4 py-2 border-2 border-border rounded-lg hover:border-accent hover:bg-accent/10 transition-all duration-300"
-                title="Admin Paneli"
-              >
-                <Settings className="w-4 h-4 text-text-tertiary group-hover:text-accent transition-colors" />
               </button>
             </div>
           </div>
